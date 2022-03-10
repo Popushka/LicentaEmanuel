@@ -63,6 +63,7 @@ export const ModalProgramare = ({}: ModalProgramareProps) => {
             value={value}
             onChange={(newValue: any) => {
               setValue(newValue);
+              console.log(newValue);
             }}
           />
         </LocalizationProvider>
