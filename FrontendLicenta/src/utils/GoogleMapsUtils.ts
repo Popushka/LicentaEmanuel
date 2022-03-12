@@ -1,5 +1,5 @@
 export const loadMapApi = () => {
-  const mapsURL = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places,places&language=no&region=NO&v=quarterly&callback=initMap`;
+  const mapsURL = `  <script async defer src="https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&callback=initMap"></script>`;
   const scripts = document.getElementsByTagName("script");
   // Go through existing script tags, and return google maps api tag when found.
   for (let i = 0; i < scripts.length; i++) {
