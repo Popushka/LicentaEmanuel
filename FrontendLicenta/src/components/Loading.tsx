@@ -2,10 +2,10 @@ import { LoadingOutlined } from "@ant-design/icons";
 import React from "react";
 
 export interface LoadingProps {
-  navigateToHealthProblems: () => void;
+  navigateToAutentificare: () => void;
 }
 
-export const Loading = ({ navigateToHealthProblems }: LoadingProps) => {
-  navigateToHealthProblems();
+export const Loading = ({ navigateToAutentificare }: LoadingProps) => {
+  navigateToAutentificare();
   return <LoadingOutlined />;
 };

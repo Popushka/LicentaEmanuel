@@ -12,6 +12,7 @@ export interface User {
   varsta: number;
   diagnostic: string;
   detalii: string;
+  email: string;
 }
 
 export interface Programare {

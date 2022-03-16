@@ -6,6 +6,7 @@ export const mockedUser: User = {
   varsta: 21,
   diagnostic: "Picior Rupt",
   detalii: "Ma doare piciorul",
+  email: "emanuel.oltean12@gmail.com",
 };
 
 export const mockedProgramari: Programare[] = [

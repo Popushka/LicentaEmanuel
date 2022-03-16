@@ -7,6 +7,7 @@ import { Navigation } from "./components/Navigation";
 import { useApp } from "./components/StateFile";
 import { DetaliiClinica } from "./components/DetaliiClinica/DetaliiClinica";
 import { mockedClinici } from "./common/HardcodedData";
+import { Autentificare } from "./components/Autentificare/Autentificare";
 
 export const App = () => {
   const {
@@ -18,7 +19,8 @@ export const App = () => {
     navigateToHealthProblems,
     navigateToAppointment,
     setClinicaActuala,
-    clinicaActuala
+    navigateToAutentificare,
+    clinicaActuala,
   } = useApp();
   return (
     <div>
@@ -30,12 +32,23 @@ export const App = () => {
         navigateToAppointment={navigateToAppointment}
         navigateToClinics={navigateToClinics}
         navigateToHealthProblems={navigateToHealthProblems}
+        navigateToAutentificare={navigateToAutentificare}
       />
       <Navigation activeScreen={screens}>
-        <Loading navigateToHealthProblems={navigateToHealthProblems}></Loading>
+        <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
+        <Autentificare
+          navigateToHealthProblems={navigateToHealthProblems}
+          navigateToAutentificare={navigateToAutentificare}
+        ></Autentificare>
         <HealthProblemPage navigateToClinics={navigateToClinics} />
-        <Clinics navigateToAppointment={navigateToAppointment} setClinicaActuala={setClinicaActuala} />
-        <DetaliiClinica navigateToClinics={navigateToClinics} imagine={clinicaActuala?.imagine} />
+        <Clinics
+          navigateToAppointment={navigateToAppointment}
+          setClinicaActuala={setClinicaActuala}
+        />
+        <DetaliiClinica
+          navigateToClinics={navigateToClinics}
+          imagine={clinicaActuala?.imagine}
+        />
       </Navigation>
     </div>
   );
