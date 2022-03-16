@@ -9,6 +9,7 @@ export interface HeaderProps {
   navigateToHealthProblems: () => void;
   navigateToClinics: () => void;
   navigateToAppointment: () => void;
+  navigateToAutentificare: () => void;
 }
 
 export const SiteHeader = ({
@@ -19,6 +20,7 @@ export const SiteHeader = ({
   navigateToAppointment,
   navigateToClinics,
   navigateToHealthProblems,
+  navigateToAutentificare,
 }: HeaderProps) => {
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
@@ -35,8 +37,9 @@ export const SiteHeader = ({
               size="large"
               onClick={() => {
                 console.log(screens);
-                if (screens === 2) navigateToHealthProblems();
-                else if (screens === 3) navigateToClinics();
+                if (screens === 2) navigateToAutentificare();
+                if (screens === 3) navigateToHealthProblems();
+                else if (screens === 4) navigateToClinics();
               }}
               style={{
                 marginTop: "30px",

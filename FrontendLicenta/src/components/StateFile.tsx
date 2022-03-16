@@ -3,6 +3,7 @@ import { Clinica } from "../common/common";
 
 export enum Screens {
   Loading,
+  Autentificare,
   HealthProblem,
   Clinics,
   ClinicDetails,
@@ -15,6 +16,13 @@ export const useApp = () => {
   const [backButtonVisible, setBackButtonVisible] = useState(false);
   const [clinicaActuala, setClinicaActuala] = useState<Clinica>();
 
+  const navigateToAutentificare = () => {
+    setScreens(Screens.Autentificare);
+    setBackButtonVisible(false);
+    setHeaderVisible(true);
+    setHeaderTitle("Autentificare");
+  };
+
   const navigateToClinics = () => {
     setScreens(Screens.Clinics);
     setBackButtonVisible(true);
@@ -23,7 +31,7 @@ export const useApp = () => {
   };
   const navigateToHealthProblems = () => {
     setScreens(Screens.HealthProblem);
-    setBackButtonVisible(false);
+    setBackButtonVisible(true);
     setHeaderVisible(true);
     setHeaderTitle("Diagnosticarea problemei");
   };
@@ -42,6 +50,7 @@ export const useApp = () => {
     navigateToClinics,
     navigateToHealthProblems,
     navigateToAppointment,
+    navigateToAutentificare,
     clinicaActuala,
     setClinicaActuala,
   };
