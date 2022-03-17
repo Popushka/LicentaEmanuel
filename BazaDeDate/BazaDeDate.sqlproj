@@ -61,4 +61,10 @@
   <ItemGroup>
     <Build Include="Tabels\Clinica.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="BazaDeDate.refactorlog" />
+  </ItemGroup>
 </Project>
