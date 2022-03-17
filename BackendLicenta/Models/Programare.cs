@@ -3,15 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackendLicenta.Models
 {
-    public class Clinica
+    public class Programare
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Nume { get; set; }
-        public string Descriere { get; set; }
-        public string Imagine { get; set; }
-        public string Adresa { get; set; }
-        public string Detalii_clinica { get; set; }
+        public Pacient pacient { get; set; }
+        public string Data_programarii { get; set; }
+        public string Detalii_aditionale { get; set; }
     }
 }
