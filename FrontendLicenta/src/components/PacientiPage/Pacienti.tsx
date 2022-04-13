@@ -2,10 +2,9 @@ import { List } from "antd";
 import { mockedDoctori, mockedProgramari } from "../../common/HardcodedData";
 import { PacientItem } from "./PacientItem";
 export interface DetaliiClinicaProps {
-  navigateToProgramare: () => void;
 }
 
-export const PacientiPage = ({ navigateToProgramare }: DetaliiClinicaProps) => {
+export const PacientiPage = ({ }: DetaliiClinicaProps) => {
   const pacienti = mockedDoctori[1].programari;
   return (
     <List
@@ -31,7 +30,6 @@ export const PacientiPage = ({ navigateToProgramare }: DetaliiClinicaProps) => {
       renderItem={(pacient) => (
         <PacientItem
           pacient={pacient.pacient}
-          navigateToProgramare={navigateToProgramare}
         ></PacientItem>
       )}
     />

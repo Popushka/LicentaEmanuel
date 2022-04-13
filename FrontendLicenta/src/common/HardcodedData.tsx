@@ -12,12 +12,12 @@ export const mockedUser: User = {
 export const mockedProgramari: Programare[] = [
   {
     pacient: mockedUser,
-    data_programarii: "12 mai 2022",
+    data_programarii: "2022-31-06T16:00:00.000Z",
     detalii_aditionale: mockedUser.detalii,
   },
   {
     pacient: mockedUser,
-    data_programarii: "12 mai 2022",
+    data_programarii: "2022-06-31T16:00:00.000Z",
     detalii_aditionale: mockedUser.detalii,
   },
 ];

@@ -24,7 +24,6 @@ export const App = () => {
     navigateToAutentificare,
     navigateToPacientiPage,
     clinicaActuala,
-    navigateToProgramare,
   } = useApp();
   return (
     <div>
@@ -38,7 +37,6 @@ export const App = () => {
         navigateToHealthProblems={navigateToHealthProblems}
         navigateToAutentificare={navigateToAutentificare}
         navigateToPacientiPage={navigateToPacientiPage}
-        navigateToProgramare={navigateToProgramare}
       />
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
@@ -53,10 +51,7 @@ export const App = () => {
           setClinicaActuala={setClinicaActuala}
         />
         <DetaliiClinica />
-        <PacientiPage
-          navigateToProgramare={navigateToProgramare}
-        ></PacientiPage>
-        <ProgramarePage></ProgramarePage>
+        <PacientiPage></PacientiPage>
       </Navigation>
     </div>
   );
