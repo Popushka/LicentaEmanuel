@@ -8,11 +8,13 @@ import { ModalRegister } from "./Register";
 export interface LoginProps {
   navigateToHealthProblems: () => void;
   navigateToAutentificare: () => void;
+  navigateToPacientiPage: () => void;
 }
 
 export const Autentificare = ({
   navigateToHealthProblems,
   navigateToAutentificare,
+  navigateToPacientiPage,
 }: LoginProps) => {
   navigateToAutentificare();
 
@@ -26,8 +28,10 @@ export const Autentificare = ({
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
 
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [isDoctor, setIsDoctor] = React.useState(false);
+  console.log(isDoctor);
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -48,8 +52,22 @@ export const Autentificare = ({
         exclusive
         onChange={handleChange}
       >
-        <ToggleButton value="doctor">Doctor</ToggleButton>
-        <ToggleButton value="pacient">Pacient</ToggleButton>
+        <ToggleButton
+          value="doctor"
+          onClick={() => {
+            setIsDoctor(true);
+          }}
+        >
+          Doctor
+        </ToggleButton>
+        <ToggleButton
+          value="pacient"
+          onClick={() => {
+            setIsDoctor(false);
+          }}
+        >
+          Pacient
+        </ToggleButton>
       </ToggleButtonGroup>
       <div
         style={{
@@ -137,7 +155,10 @@ export const Autentificare = ({
               style={{ marginRight: "64px" }}
               type="primary"
               className="login-form-button"
-              onClick={() => navigateToHealthProblems()}
+              onClick={() => {
+                if (isDoctor === false) navigateToHealthProblems();
+                else navigateToPacientiPage();
+              }}
             >
               Log in
             </Button>

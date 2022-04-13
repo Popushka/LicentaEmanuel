@@ -7,6 +7,8 @@ export enum Screens {
   HealthProblem,
   Clinics,
   ClinicDetails,
+  PacientiPage,
+  ProgramarePage,
 }
 
 export const useApp = () => {
@@ -21,6 +23,20 @@ export const useApp = () => {
     setBackButtonVisible(false);
     setHeaderVisible(true);
     setHeaderTitle("Autentificare");
+  };
+
+  const navigateToPacientiPage = () => {
+    setScreens(Screens.PacientiPage);
+    setBackButtonVisible(true);
+    setHeaderVisible(true);
+    setHeaderTitle("Pacientii");
+  };
+
+  const navigateToProgramare = () => {
+    setScreens(Screens.ProgramarePage);
+    setBackButtonVisible(true);
+    setHeaderVisible(true);
+    setHeaderTitle("Programari");
   };
 
   const navigateToClinics = () => {
@@ -51,7 +67,9 @@ export const useApp = () => {
     navigateToHealthProblems,
     navigateToAppointment,
     navigateToAutentificare,
+    navigateToPacientiPage,
     clinicaActuala,
     setClinicaActuala,
+    navigateToProgramare
   };
 };
