@@ -7,15 +7,28 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import { User } from "../../common/common";
+import { useState } from "react";
+import { ProgramarePage } from "./PaginaProgramare";
+import { Modal } from "antd";
 
 export interface PacientiItemInterface {
   pacient: User;
-  navigateToProgramare: () => void;
 }
 export const PacientItem = ({
   pacient,
-  navigateToProgramare,
 }: PacientiItemInterface) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <div>
       <ListItem>
@@ -45,12 +58,20 @@ export const PacientItem = ({
           size="small"
           color="info"
           variant="outlined"
-          onClick={navigateToProgramare}
+          onClick={showModal}
         >
           View
         </Button>
       </ListItem>
       <Divider variant="inset" component="li" />
+      <Modal
+        title="Programare"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <ProgramarePage></ProgramarePage>
+      </Modal>
     </div>
   );
 };

@@ -11,7 +11,6 @@ export interface HeaderProps {
   navigateToAppointment: () => void;
   navigateToAutentificare: () => void;
   navigateToPacientiPage: () => void;
-  navigateToProgramare: () => void;
 }
 
 export const SiteHeader = ({
@@ -23,7 +22,6 @@ export const SiteHeader = ({
   navigateToClinics,
   navigateToHealthProblems,
   navigateToAutentificare,
-  navigateToProgramare,
 }: HeaderProps) => {
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
@@ -43,7 +41,6 @@ export const SiteHeader = ({
                 if (screens === 2 || screens === 5) navigateToAutentificare();
                 if (screens === 3) navigateToHealthProblems();
                 else if (screens === 4) navigateToClinics();
-                else if (screens === 5) navigateToProgramare();
               }}
               style={{
                 marginTop: "30px",
