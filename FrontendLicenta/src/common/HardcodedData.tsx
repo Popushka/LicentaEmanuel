@@ -15,6 +15,11 @@ export const mockedProgramari: Programare[] = [
     data_programarii: "12 mai 2022",
     detalii_aditionale: mockedUser.detalii,
   },
+  {
+    pacient: mockedUser,
+    data_programarii: "12 mai 2022",
+    detalii_aditionale: mockedUser.detalii,
+  },
 ];
 
 export const mockedDoctori: Doctori[] = [
