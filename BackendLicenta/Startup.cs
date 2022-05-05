@@ -34,7 +34,7 @@ namespace BackendLicenta
 
             services.AddDbContext<GeneralContext>(options =>
             {
-                options.UseSqlServer($"Server=DESKTOP-36P4EF1\\SQLEXPRESS;Integrated Security=SSPI;Database=LicentaDB;MultipleActiveResultSets=true");
+                options.UseSqlServer($"Server=DESKTOP-36P4EF1\\SQLEXPRESS;Integrated Security=SSPI;Database=BazaDeDate;MultipleActiveResultSets=true");
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
