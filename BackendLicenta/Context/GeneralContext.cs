@@ -10,7 +10,8 @@ namespace BackendLicenta.Context
         public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Doctor> Pacient { get; set; }
         public DbSet<Doctor> Programare { get; set; }
-        public DbSet<Doctor> User { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<RegistrationCode> RegistrationCode { get; set; }
 
         public GeneralContext(DbContextOptions<GeneralContext> options)
             : base(options) { }

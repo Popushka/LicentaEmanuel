@@ -14,9 +14,7 @@ import { Modal } from "antd";
 export interface PacientiItemInterface {
   pacient: User;
 }
-export const PacientItem = ({
-  pacient,
-}: PacientiItemInterface) => {
+export const PacientItem = ({ pacient }: PacientiItemInterface) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
