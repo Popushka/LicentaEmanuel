@@ -1,0 +1,45 @@
+.text {
+  width: 100%;
+  background: white;
+  top: 300;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+@media (max-width: 599px) {
+  .container {
+    flex-flow: column;
+  }
+}
+
+/* Body */
+
+.human_try {
+  width: 207px;
+  height: 500px;
+  display: block;
+  margin: 30px auto;
+}
+
+.part {
+  fill: #e8beac;
+  /* filter: url(#shadow); */
+  -webkit-tap-highlight-color: transparent;
+}
+.partSelected {
+  fill: url(#spam_selected);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.part:hover,
+.partSelected:hover {
+  fill: url(#spam_hover);
+  cursor: pointer;
+}

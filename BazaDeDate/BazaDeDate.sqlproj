@@ -60,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tabels\Clinica.sql" />
+    <Build Include="Tabels\User.sql" />
+    <Build Include="Tabels\Doctor.sql" />
+    <Build Include="Tabels\Pacient.sql" />
+    <Build Include="Tabels\Detalii_Clinica.sql" />
+    <Build Include="Tabels\Programare.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
