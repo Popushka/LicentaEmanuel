@@ -41,14 +41,15 @@ namespace BackendLicenta.Repos
             var reg = await context.RegistrationCode.Where(r => r.Code.Equals(code)&&!r.Used).FirstOrDefaultAsync();
             return reg != null;
         }
-        public async Task<User> UseRegistration(CreateUserRequest request,IConfiguration configuration)
+        public async Task<User> UseRegistration(CreatePacientRequest request,IConfiguration configuration)
         {
             string password = EncryptLibrary.EncryptString(configuration["Encription:Secret"], request.Password);
             var user = new User()
             {
-                Nume_utilizator = request.Username.ToLower(),
+                Nume_utilizator = request.Nume_utilizator.ToLower(),
                 Parola = password,
-                Email = request.Email
+                Email = request.Email,
+                Detalii_utilizator=request.Detalii_utilizator
             };
             var reg = await context.RegistrationCode.Where(r => r.Code.Equals(request.RegistrationCode)).FirstOrDefaultAsync();
             reg.Used = true;

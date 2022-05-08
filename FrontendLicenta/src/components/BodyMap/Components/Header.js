@@ -4,7 +4,7 @@ import style from "../index.module.css";
 const Header = ({ douleur }) => {
   return (
     <div className={style.text}>
-      {douleur || "Sélectionnez une partie du corps"}
+      {douleur || "Selecteaza o parte a corpului"}
     </div>
   );
 };

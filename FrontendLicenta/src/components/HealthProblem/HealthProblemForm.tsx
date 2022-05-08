@@ -76,6 +76,12 @@ export const HealthProblemForm = ({
           >
             <InputNumber />
           </Form.Item>
+          <Form.Item
+            name={["user", "CNP"]}
+            label="CNP"
+          >
+            <InputNumber minLength={13} maxLength={13}  style={{width:"135px"}} />
+          </Form.Item>
           <Form.Item label="Diagnostic">
             <Cascader
               options={options}

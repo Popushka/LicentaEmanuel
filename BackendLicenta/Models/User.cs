@@ -10,5 +10,6 @@ namespace BackendLicenta.Models
         public string Parola { get; set; }
         public string Email { get; set; }
         public Pacient Detalii_utilizator { get; set; }
+        
     }
 }

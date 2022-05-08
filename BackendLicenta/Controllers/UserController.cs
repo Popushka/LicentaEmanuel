@@ -19,46 +19,9 @@ namespace BackendLicenta.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUser()
         {
-            var user = await context.Pacient.ToListAsync();
+            var user = await context.User.ToListAsync();
 
             return Ok(user);
-        }
-
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserRequest request)
-        {
-            var registerResult = await CreateLogin(request);
-            if (registerResult.Successfull)
-            {
-                return Ok("User created");
-            }
-            else
-            {
-                return BadRequest(registerResult.Error);
-            }
-        }
-        [HttpPost("codregister")]
-        public async Task<IActionResult> CreazaCodRegister()
-        {
-            string username = HttpContext.User.Claims.Where(u => u.Type.Equals("Username")).FirstOrDefault().Value;
-            var user = await context.User.Where(u => u.Nume_utilizator.Equals(username)).FirstOrDefaultAsync();
-            if (user == null)
-            {
-                return BadRequest("You dont have an account!");
-            }
-
-            var registerRepo = new RegistrationRepo(context);
-            var code = await registerRepo.CreateRegistrationCode(user);
-            if (code.Succsessfull)
-            {
-                return Ok(code.RegistrationCode.Code);
-            }
-            else
-            {
-                return BadRequest(code.Error);
-            }
         }
     }
 }

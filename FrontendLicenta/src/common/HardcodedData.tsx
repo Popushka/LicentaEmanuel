@@ -30,6 +30,7 @@ export const mockedDoctori: Doctori[] = [
     imagine:
       "https://www.publicdomainpictures.net/pictures/210000/velka/doctor-1490804718D0I.jpg",
     descriere: `Aici e descrierea fiecarui doctooooor`,
+    codParafa: "1234",
   },
   {
     nume: "Paul",
@@ -38,6 +39,7 @@ export const mockedDoctori: Doctori[] = [
     imagine:
       "https://www.publicdomainpictures.net/pictures/210000/velka/doctor-1490804718D0I.jpg",
     descriere: `Aici e descrierea fiecarui doctooooor`,
+    codParafa: "1025",
   },
   {
     nume: "Oltean",
@@ -46,6 +48,7 @@ export const mockedDoctori: Doctori[] = [
     imagine:
       "https://www.publicdomainpictures.net/pictures/210000/velka/doctor-1490804718D0I.jpg",
     descriere: `Aici e descrierea fiecarui doctooooor`,
+    codParafa: "1133",
   },
   {
     nume: "Oltean",
@@ -54,6 +57,7 @@ export const mockedDoctori: Doctori[] = [
     imagine:
       "https://www.publicdomainpictures.net/pictures/210000/velka/doctor-1490804718D0I.jpg",
     descriere: `Aici e descrierea fiecarui doctooooor`,
+    codParafa: "asd",
   },
   {
     nume: "Piscot5",
@@ -62,6 +66,7 @@ export const mockedDoctori: Doctori[] = [
     imagine:
       "https://www.publicdomainpictures.net/pictures/210000/velka/doctor-1490804718D0I.jpg",
     descriere: `Aici e descrierea fiecarui doctooooor`,
+    codParafa: "1000",
   },
 ];
 

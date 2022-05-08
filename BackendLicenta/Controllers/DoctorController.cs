@@ -1,20 +1,16 @@
 ﻿using BackendLicenta.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace BackendLicenta.Controllers
 {
     [ApiController]
     [Route("doctor")]
-    public class DoctorController : ControllerBase
+    public class DoctorController : BaseRepo
     {
-        private readonly GeneralContext context;
-
-        public DoctorController(GeneralContext context)
-        {
-            this.context = context;
-        }
+        public DoctorController(GeneralContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [HttpGet]
         public async Task<IActionResult> GetDoctor()

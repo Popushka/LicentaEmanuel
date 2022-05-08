@@ -4,9 +4,11 @@ import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import { mockedOptions, mockedUser } from "../../common/HardcodedData";
+import { mockedDoctori, mockedOptions, mockedUser } from "../../common/HardcodedData";
 import { LockOutlined } from "@mui/icons-material";
-export interface ModalRegisterProps {}
+export interface ModalRegisterProps {
+  isDoctor: boolean;
+}
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -24,7 +26,7 @@ const validateMessages = {
 
 const options = mockedOptions;
 
-export const ModalRegister = ({}: ModalRegisterProps) => {
+export const ModalRegister = ({ isDoctor }: ModalRegisterProps) => {
   const onChange = (values: any) => {
     console.log(values);
   };
@@ -35,13 +37,11 @@ export const ModalRegister = ({}: ModalRegisterProps) => {
     new Date("2022-01-01T00:00:00.000Z")
   );
   return (
-    <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }} layout="horizontal">
-      <Form.Item name={["user", "nume"]} label="Nume">
+    <Form labelCol={{ span: 6 }} wrapperCol={{ span: 14 }} labelAlign="left" layout="horizontal">
+      <Form.Item name={["user", "nume"]} label="Nume Utilizator">
         <Input placeholder={mockedUser.nume} />
       </Form.Item>
-      <Form.Item name={["user", "prenume"]} label="Prenume">
-        <Input placeholder={mockedUser.prenume} />
-      </Form.Item>
+
       <Form.Item name={["user", "email"]} label="Email">
         <Input placeholder={mockedUser.email} />
       </Form.Item>

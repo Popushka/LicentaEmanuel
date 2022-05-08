@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackendLicenta.Models
@@ -14,6 +15,7 @@ namespace BackendLicenta.Models
         public int Varsta { get; set; }
         public string Diagnostic { get; set; }
         public string Detalii { get; set; }
-        public Programare Programare { get; set; }
+        public long PacientCNP { get; set; }
+        public ICollection<Programare> Programare { get; set; } = new List<Programare>();
     }
 }

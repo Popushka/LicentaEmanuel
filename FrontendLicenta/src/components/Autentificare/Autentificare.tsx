@@ -152,7 +152,7 @@ export const Autentificare = ({
 
           <Form.Item>
             <Button
-              style={{ marginRight: "64px" }}
+              style={{ marginRight: "64px", width:isDoctor?"155px":"", marginLeft:isDoctor?"60px":"" }}
               type="primary"
               className="login-form-button"
               onClick={() => {
@@ -162,24 +162,26 @@ export const Autentificare = ({
             >
               Log in
             </Button>
-            <Button
-              onClick={() => {
-                setIsModalVisible(true);
-              }}
-              style={{ marginLeft: "64px" }}
-            >
-              Register
-            </Button>
+            {isDoctor === false ? (
+              <Button
+                onClick={() => {
+                  setIsModalVisible(true);
+                }}
+                style={{ marginLeft: "64px" }}
+              >
+                Register
+              </Button>
+            ) : null}
           </Form.Item>
-          <Modal
-            title="Inregistrare"
-            visible={isModalVisible}
-            okText="Register"
-            onOk={handleOk}
-            onCancel={handleCancel}
-          >
-            <ModalRegister></ModalRegister>
-          </Modal>
+          {isDoctor === false ? (
+            <Modal
+              title="Inregistrare"
+              visible={isModalVisible}
+              okText="Register"
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ><ModalRegister isDoctor={isDoctor}></ModalRegister></Modal>
+          ) : null}
         </Form>
       </div>
     </div>
