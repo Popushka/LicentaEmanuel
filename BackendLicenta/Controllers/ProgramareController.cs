@@ -19,7 +19,7 @@ namespace BackendLicenta.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProgramare()
         {
-            var programare = await context.Pacient.ToListAsync();
+            var programare = await context.Programare.ToListAsync();
 
             return Ok(programare);
         }
@@ -33,7 +33,7 @@ namespace BackendLicenta.Controllers
             {
                 return BadRequest();
             }
-            pacient.Programare.Add(new Programare()
+            pacient.Programare.Add(new ProgramarePacient()
             { PacientId=pacient.Id,
             Detalii_aditionale=request.Detalii_aditionale,
             Data_programarii=request.Data_programarii

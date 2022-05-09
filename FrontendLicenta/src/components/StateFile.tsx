@@ -8,6 +8,7 @@ export enum Screens {
   Clinics,
   ClinicDetails,
   PacientiPage,
+  SymptomChecker,
 }
 
 export const useApp = () => {
@@ -22,6 +23,12 @@ export const useApp = () => {
     setBackButtonVisible(false);
     setHeaderVisible(true);
     setHeaderTitle("Autentificare");
+  };
+
+  const navigateToSymptomChecker = () => {
+    setScreens(Screens.SymptomChecker);
+    setBackButtonVisible(false);
+    setHeaderVisible(false);
   };
 
   const navigateToPacientiPage = () => {
@@ -60,6 +67,7 @@ export const useApp = () => {
     navigateToAppointment,
     navigateToAutentificare,
     navigateToPacientiPage,
+    navigateToSymptomChecker,
     clinicaActuala,
     setClinicaActuala,
   };

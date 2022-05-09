@@ -21,42 +21,24 @@ namespace BackendLicenta.Repos
             this.context = context;
         }
 
-        public async Task<CreateRegistrationCodeResult> CreateRegistrationCode(User user)
-        {
-            RegistrationCode registrationCode = new RegistrationCode()
-            {
-                CreatedByUserId = user.Id,
-                Code = Guid.NewGuid().ToString()
-            };
-            context.RegistrationCode.Add(registrationCode);
-            await context.SaveChangesAsync();
-            return new CreateRegistrationCodeResult()
-            {
-                Succsessfull = true,
-                RegistrationCode = registrationCode
-            };
-        }
-        public async Task<bool> CheckRegistration(String code)
-        {
-            var reg = await context.RegistrationCode.Where(r => r.Code.Equals(code)&&!r.Used).FirstOrDefaultAsync();
-            return reg != null;
-        }
-        public async Task<User> UseRegistration(CreatePacientRequest request,IConfiguration configuration)
+        public async Task<Pacient> UseRegistration(CreatePacientRequest request,IConfiguration configuration)
         {
             string password = EncryptLibrary.EncryptString(configuration["Encription:Secret"], request.Password);
-            var user = new User()
-            {
+            var pacient = new Pacient()
+            {   Id=request.Id,
                 Nume_utilizator = request.Nume_utilizator.ToLower(),
                 Parola = password,
                 Email = request.Email,
-                Detalii_utilizator=request.Detalii_utilizator
+                Nume=request.Nume,
+                Prenume=request.Prenume,
+                Varsta=request.Varsta,
+                Diagnostic=request.Diagnostic,
+                Detalii=request.Detalii,
             };
-            var reg = await context.RegistrationCode.Where(r => r.Code.Equals(request.RegistrationCode)).FirstOrDefaultAsync();
-            reg.Used = true;
-            reg.User = user;
-            context.User.Add(user);
+
+            context.Pacient.Add(pacient);
             await context.SaveChangesAsync();
-            return user;
+            return pacient;
         }
     }
 }

@@ -38,26 +38,6 @@ namespace BackendLicenta.Controllers
                 return BadRequest(registerResult.Error);
             }
         }
-        [HttpPost("codregister")]
-        public async Task<IActionResult> CreazaCodRegister()
-        {
-            string username = HttpContext.User.Claims.Where(u => u.Type.Equals("Nume_utilizator")).FirstOrDefault().Value;
-            var user = await context.User.Where(u => u.Nume_utilizator.Equals(username)).FirstOrDefaultAsync();
-            if (user == null)
-            {
-                return BadRequest("You dont have an account!");
-            }
 
-            var registerRepo = new RegistrationRepo(context);
-            var code = await registerRepo.CreateRegistrationCode(user);
-            if (code.Succsessfull)
-            {
-                return Ok(code.RegistrationCode.Code);
-            }
-            else
-            {
-                return BadRequest(code.Error);
-            }
-        }
     }
 }

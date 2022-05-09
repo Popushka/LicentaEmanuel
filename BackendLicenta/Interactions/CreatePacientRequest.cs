@@ -6,15 +6,18 @@ namespace BackendLicenta.Interaction
 {
     public class CreatePacientRequest
     {
+        public int Id { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string Nume_utilizator { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string Password { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string Email { get; set; }
-        [Required(AllowEmptyStrings = false)]
-        public string RegistrationCode { get; set; }
 
-        public Pacient Detalii_utilizator { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public int Varsta { get; set; }
+        public string Diagnostic { get; set; }
+        public string Detalii { get; set; }
     }
 }

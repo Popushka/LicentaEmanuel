@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackendLicenta.Models
 {
-    public class Programare
+    public class ProgramarePacient
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

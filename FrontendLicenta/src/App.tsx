@@ -10,6 +10,7 @@ import { mockedClinici } from "./common/HardcodedData";
 import { Autentificare } from "./components/Autentificare/Autentificare";
 import { PacientiPage } from "./components/PacientiPage/Pacienti";
 import { ProgramarePage } from "./components/PacientiPage/PaginaProgramare";
+import HomePageMain from "./components/SymptomChecker/HomePageMain";
 
 export const App = () => {
   const {
@@ -23,6 +24,7 @@ export const App = () => {
     setClinicaActuala,
     navigateToAutentificare,
     navigateToPacientiPage,
+    navigateToSymptomChecker,
     clinicaActuala,
   } = useApp();
   return (
@@ -41,6 +43,7 @@ export const App = () => {
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
         <Autentificare
+          navigateToSymptomChecker={navigateToSymptomChecker}
           navigateToPacientiPage={navigateToPacientiPage}
           navigateToHealthProblems={navigateToHealthProblems}
           navigateToAutentificare={navigateToAutentificare}
@@ -52,6 +55,7 @@ export const App = () => {
         />
         <DetaliiClinica />
         <PacientiPage></PacientiPage>
+        <HomePageMain></HomePageMain>
       </Navigation>
     </div>
   );

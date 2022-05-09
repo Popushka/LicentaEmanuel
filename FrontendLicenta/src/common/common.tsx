@@ -27,7 +27,7 @@ export interface Doctori {
   programari: Programare[];
   imagine: string;
   descriere: string;
-  codParafa:string;
+  codParafa: string;
 }
 
 export interface Optiuni {

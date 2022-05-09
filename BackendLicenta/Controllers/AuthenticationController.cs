@@ -35,8 +35,8 @@ namespace WebApi.Controllers
             {
                 password = request.Password;
             }
-            User user = await context.User.FirstOrDefaultAsync(u => u.Nume_utilizator.Equals(request.Username.ToLower()) && u.Parola.Equals(password));
-            if (user == null)
+            Pacient pacient = await context.Pacient.FirstOrDefaultAsync(u => u.Nume_utilizator.Equals(request.Username.ToLower()) && u.Parola.Equals(password));
+            if (pacient == null)
             {
                 return BadRequest("Invalid credentials");
             }
@@ -45,8 +45,8 @@ namespace WebApi.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),//subiectul
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),//id-ul tokenului
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()),//data trimiterii
-                new Claim("Id",user.Id.ToString()),
-                new Claim("Nume_utilizator",user.Nume_utilizator)
+                new Claim("Id",pacient.Id.ToString()),
+                new Claim("Nume_utilizator",pacient.Nume_utilizator)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));//secretul pt encriptare
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);//encriptare

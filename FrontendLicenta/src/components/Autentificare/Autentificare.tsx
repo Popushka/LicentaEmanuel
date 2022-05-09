@@ -9,12 +9,14 @@ export interface LoginProps {
   navigateToHealthProblems: () => void;
   navigateToAutentificare: () => void;
   navigateToPacientiPage: () => void;
+  navigateToSymptomChecker: () => void;
 }
 
 export const Autentificare = ({
   navigateToHealthProblems,
   navigateToAutentificare,
   navigateToPacientiPage,
+  navigateToSymptomChecker,
 }: LoginProps) => {
   navigateToAutentificare();
 
@@ -38,6 +40,7 @@ export const Autentificare = ({
 
   const handleOk = () => {
     setIsModalVisible(false);
+    navigateToSymptomChecker();
   };
 
   const handleCancel = () => {
@@ -152,7 +155,11 @@ export const Autentificare = ({
 
           <Form.Item>
             <Button
-              style={{ marginRight: "64px", width:isDoctor?"155px":"", marginLeft:isDoctor?"60px":"" }}
+              style={{
+                marginRight: "64px",
+                width: isDoctor ? "155px" : "",
+                marginLeft: isDoctor ? "60px" : "",
+              }}
               type="primary"
               className="login-form-button"
               onClick={() => {
@@ -180,7 +187,9 @@ export const Autentificare = ({
               okText="Register"
               onOk={handleOk}
               onCancel={handleCancel}
-            ><ModalRegister isDoctor={isDoctor}></ModalRegister></Modal>
+            >
+              <ModalRegister isDoctor={isDoctor}></ModalRegister>
+            </Modal>
           ) : null}
         </Form>
       </div>

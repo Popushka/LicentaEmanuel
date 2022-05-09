@@ -28,52 +28,42 @@ namespace BackendLicenta
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<CreateUserResult> CreateLogin(CreatePacientRequest request)
         {
-            var user = await context.User.Where(u => u.Nume_utilizator.Equals(request.Nume_utilizator.ToLower())).FirstOrDefaultAsync();
+            var user = await context.Pacient.Where(u => u.Nume_utilizator.Equals(request.Nume_utilizator.ToLower())).FirstOrDefaultAsync();
             if (user != null)
             {
                 return new CreateUserResult() {Successfull=false,Error="A user already exists with this username" };
             }
             var regRepo = new RegistrationRepo(context);
-            if(await regRepo.CheckRegistration(request.RegistrationCode))
-            {
+
                 await regRepo.UseRegistration(request, configuration);
                 return new CreateUserResult() { Successfull = true };
-            }
-            else
-            {
-                return new CreateUserResult() { Successfull = false, Error = "Wrong registration code!" };
-            }
+
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<CreateUserResult> CreateLoginPacient(CreatePacientRequest request)
         {
-            var user = await context.User.Where(u => u.Nume_utilizator.Equals(request.Nume_utilizator.ToLower())).FirstOrDefaultAsync();
+            var user = await context.Pacient.Where(u => u.Nume_utilizator.Equals(request.Nume_utilizator.ToLower())).FirstOrDefaultAsync();
             if (user != null)
             {
                 return new CreateUserResult() { Successfull = false, Error = "A user already exists with this username" };
             }
             var regRepo = new RegistrationRepo(context);
-            if (await regRepo.CheckRegistration(request.RegistrationCode))
-            {
+
                 await regRepo.UseRegistration(request, configuration);
                 return new CreateUserResult() { Successfull = true };
-            }
-            else
-            {
-                return new CreateUserResult() { Successfull = false, Error = "Wrong registration code!" };
-            }
+
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        public async Task<User> CheckLogin(string username,string password)
+        public async Task<Pacient> CheckLogin(string username,string password)
         {
             string encryptedPassword = EncryptLibrary.EncryptString(configuration["Encription:Secret"], password);
             if (username.Equals("admin"))
             {
                 encryptedPassword = password;
             }
-            return await context.User.Where(u => u.Nume_utilizator.Equals(username.ToLower())&&u.Parola.Equals(encryptedPassword)).FirstOrDefaultAsync();
+            return await context.Pacient.Where(u => u.Nume_utilizator.Equals(username.ToLower())&&u.Parola.Equals(encryptedPassword)).FirstOrDefaultAsync();
         }
     }
 }

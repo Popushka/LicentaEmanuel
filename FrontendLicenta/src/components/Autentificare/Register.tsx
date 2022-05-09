@@ -4,7 +4,11 @@ import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import { mockedDoctori, mockedOptions, mockedUser } from "../../common/HardcodedData";
+import {
+  mockedDoctori,
+  mockedOptions,
+  mockedUser,
+} from "../../common/HardcodedData";
 import { LockOutlined } from "@mui/icons-material";
 export interface ModalRegisterProps {
   isDoctor: boolean;
@@ -37,7 +41,12 @@ export const ModalRegister = ({ isDoctor }: ModalRegisterProps) => {
     new Date("2022-01-01T00:00:00.000Z")
   );
   return (
-    <Form labelCol={{ span: 6 }} wrapperCol={{ span: 14 }} labelAlign="left" layout="horizontal">
+    <Form
+      labelCol={{ span: 6 }}
+      wrapperCol={{ span: 14 }}
+      labelAlign="left"
+      layout="horizontal"
+    >
       <Form.Item name={["user", "nume"]} label="Nume Utilizator">
         <Input placeholder={mockedUser.nume} />
       </Form.Item>
