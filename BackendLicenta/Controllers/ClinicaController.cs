@@ -1,4 +1,5 @@
 ﻿using BackendLicenta.Context;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ namespace BackendLicenta.Controllers
         public ClinicaController(GeneralContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetClinica()
         {
             var clinics = await context.Clinica.ToListAsync();

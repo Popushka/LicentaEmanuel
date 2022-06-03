@@ -1,11 +1,13 @@
 import { Input, Form, InputNumber, Cascader, Button } from "antd";
-import React, { useState } from "react";
+import React, { Dispatch, useState } from "react";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { mockedOptions, mockedUser } from "../../common/HardcodedData";
-export interface ModalProgramareProps {}
+export interface ModalProgramareProps {
+  setDateModal: Dispatch<any>;
+}
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -23,7 +25,7 @@ const validateMessages = {
 
 const options = mockedOptions;
 
-export const ModalProgramare = ({}: ModalProgramareProps) => {
+export const ModalProgramare = ({ setDateModal }: ModalProgramareProps) => {
   const onChange = (values: any) => {
     console.log(values);
   };

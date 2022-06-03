@@ -6,11 +6,13 @@ import { Clinica } from "../../common/common";
 export interface ClinicsListProps {
   navigateToAppointment: () => void;
   setClinicaActuala: (clinica: Clinica) => void;
+  clinici: Clinica[] | undefined;
 }
 
 export const ClinicsList = ({
   navigateToAppointment,
   setClinicaActuala,
+  clinici,
 }: ClinicsListProps) => {
   return (
     <List
@@ -23,8 +25,7 @@ export const ClinicsList = ({
         },
         pageSize: 10,
       }}
-      
-      dataSource={mockedClinici}
+      dataSource={clinici}
       renderItem={(item) => (
         <ClinicsItem
           clinica={item}

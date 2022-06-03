@@ -12,6 +12,7 @@ export interface DetaliiDoctorProps {
 
 export const DetaliiDoctor = ({ doctor }: DetaliiDoctorProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [dateModal,setDateModal]=useState<any>();
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -58,7 +59,7 @@ export const DetaliiDoctor = ({ doctor }: DetaliiDoctorProps) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <ModalProgramare></ModalProgramare>
+        <ModalProgramare setDateModal={setDateModal}></ModalProgramare>
       </Modal>
     </div>
   );

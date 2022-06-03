@@ -34,6 +34,7 @@ namespace BackendLicenta.Repos
                 Varsta=request.Varsta,
                 Diagnostic=request.Diagnostic,
                 Detalii=request.Detalii,
+                PacientCNP=request.PacientCNP
             };
 
             context.Pacient.Add(pacient);

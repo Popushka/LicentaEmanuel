@@ -12,5 +12,5 @@ namespace BackendLicenta.Context
 
         public GeneralContext(DbContextOptions<GeneralContext> options)
             : base(options) { }
-    }
+    }  
 }

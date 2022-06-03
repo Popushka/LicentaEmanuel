@@ -7,18 +7,23 @@ import {
   InfoWindow,
 } from "react-google-maps";
 
-const Display = () => {
+export interface DisplayProps {
+  latitudine: number;
+  longitudine: number;
+}
+
+const Display = ({ latitudine, longitudine }: DisplayProps) => {
   return (
     <div className="wrapper">
       <GoogleMap
         defaultZoom={12}
-        defaultCenter={{ lat: 45.7494, lng: 21.2272 }}
+        defaultCenter={{ lat: latitudine, lng: longitudine }}
       />
     </div>
   );
 };
 
-export const Map = (props: any) => {
+export const Map = ({ latitudine, longitudine }: DisplayProps) => {
   const WrappedMap = withScriptjs(withGoogleMap(Display));
 
   return (
@@ -27,6 +32,8 @@ export const Map = (props: any) => {
       style={{ marginTop: "30px", marginLeft: "200px" }}
     >
       <WrappedMap
+        latitudine={latitudine}
+        longitudine={longitudine}
         googleMapURL={
           "https://maps.googleapis.com/maps/api/js?key=AIzaSyAdAIsrEETSK6IpvtxVVf-HD8v2AWWN61Q&v=3.exp&libraries=geometry,drawing,places"
         }

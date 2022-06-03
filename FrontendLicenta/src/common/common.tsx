@@ -2,20 +2,27 @@ export interface Clinica {
   nume: string;
   descriere: string;
   imagine: string;
-  adresa: string;
   doctori: Doctori[];
+  latitudine: number;
+  longitudine: number;
+  adresa: string;
 }
 
 export interface User {
   nume: string;
   prenume: string;
+  parola: string;
+  email: string;
+  nume_utilizator: string;
   varsta: number;
   diagnostic: string;
   detalii: string;
-  email: string;
+  pacientCNP: number;
+  programareId: number;
 }
 
 export interface Programare {
+  id: number;
   pacient: User;
   data_programarii: string;
   detalii_aditionale: string;

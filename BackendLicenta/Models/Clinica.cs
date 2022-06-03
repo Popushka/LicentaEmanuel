@@ -11,6 +11,9 @@ namespace BackendLicenta.Models
         public string Nume { get; set; }
         public string Descriere { get; set; }
         public string Imagine { get; set; }
-        public string Adresa { get; set; }
+        public double Latitudine { get; set; }
+        public double Longitudine { get; set; }
+
+        public int DoctorId { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace BackendLicenta.Interaction
         public int Varsta { get; set; }
         public string Diagnostic { get; set; }
         public string Detalii { get; set; }
+        public long PacientCNP { get; set; }
     }
 }

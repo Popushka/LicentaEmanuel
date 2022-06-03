@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Clinica } from "../common/common";
+import { Clinica, Doctori, Programare, User } from "../common/common";
+import axios from "axios";
 
 export enum Screens {
   Loading,
@@ -17,6 +18,92 @@ export const useApp = () => {
   const [headerTitle, setHeaderTitle] = useState("");
   const [backButtonVisible, setBackButtonVisible] = useState(false);
   const [clinicaActuala, setClinicaActuala] = useState<Clinica>();
+  const [doctori, setDoctori] = useState<Doctori[]>([]);
+  const [pacienti, setPacienti] = useState<User[]>([]);
+  const [clinici, setClinici] = useState<Clinica[]>();
+  const [programari, setProgramari] = useState<Programare[]>();
+  const [user, setUser] = useState<User>();
+  const [bearer, setBearer] = useState<any>([]);
+  const getBearer = async () => {
+    axios
+      .post<string>(
+        "https://localhost:44386/authorization",
+        { Username: "string", Password: "string" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setBearer(response);
+      });
+  };
+  const getPacienti = async () => {
+    axios
+      .get("https://localhost:44386/pacient")
+      .then(async (raspuns) => {
+        setPacienti(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const getDoctori = async () => {
+    axios
+      .get("https://localhost:44386/doctor")
+      .then(async (raspuns) => {
+        setDoctori(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+  const getProgramare = async () => {
+    axios
+      .get("https://localhost:44386/programare")
+      .then(async (raspuns) => {
+        setProgramari(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+  const getClinica = async () => {
+    axios
+      .get("https://localhost:44386/clinica")
+      .then(async (raspuns) => {
+        setClinici(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+  const adaugareProgramare = async () => {
+    axios
+      .post("https://localhost:44386/programare", {
+        params: {
+          pacientCNP: 5000512114542,
+          data_programarii: "string",
+          detalii_aditionale: "string",
+          doctorId: 2,
+        },
+      })
+      .then(async (raspuns) => {
+        setClinici(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const getUserActual = async () => {
+    axios
+      .get("https://localhost:44386/pacient/user_actual", {
+        params: { numeUtilizator: "", password: "" },
+      })
+      .then(async (raspuns) => {
+        setClinici(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
 
   const navigateToAutentificare = () => {
     setScreens(Screens.Autentificare);
@@ -36,6 +123,10 @@ export const useApp = () => {
     setBackButtonVisible(true);
     setHeaderVisible(true);
     setHeaderTitle("Pacientii");
+    getPacienti();
+    getProgramare();
+    getDoctori();
+    console.log(pacienti);
   };
 
   const navigateToClinics = () => {
@@ -43,6 +134,7 @@ export const useApp = () => {
     setBackButtonVisible(true);
     setHeaderVisible(true);
     setHeaderTitle("Clinicile disponibile pentru problema ta");
+    getClinica();
   };
   const navigateToHealthProblems = () => {
     setScreens(Screens.HealthProblem);
@@ -70,5 +162,9 @@ export const useApp = () => {
     navigateToSymptomChecker,
     clinicaActuala,
     setClinicaActuala,
+    clinici,
+    doctori,
+    programari,
+    pacienti,
   };
 };

@@ -15,7 +15,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { mockedProgramari } from "../../common/HardcodedData";
 import BodyMap from "../BodyMap";
-import HomePageMain from "../SymptomChecker/HomePageMain";
+
 export interface ProgramarePageProps {}
 
 export const ProgramarePage = ({}: ProgramarePageProps) => {

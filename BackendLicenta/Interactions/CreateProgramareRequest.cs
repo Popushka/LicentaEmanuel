@@ -7,9 +7,10 @@ namespace BackendLicenta.Requests.TratamentRequests
     {
         [Required]
         [Range(0, long.MaxValue)]
-        public int PacientCNP { get; set; }
+        public long PacientCNP { get; set; }
         public string Data_programarii { get; set; }
         public string Detalii_aditionale { get; set; }
+        public int DoctorId { get; set; }
 
     }
 }

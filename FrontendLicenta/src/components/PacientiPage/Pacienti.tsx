@@ -1,11 +1,24 @@
 import { List } from "antd";
+import { Doctori, Programare, User } from "../../common/common";
 import { mockedDoctori, mockedProgramari } from "../../common/HardcodedData";
 import { PacientItem } from "./PacientItem";
-export interface DetaliiClinicaProps {
+export interface PacientiPageProps {
+  doctor: Doctori[] | undefined;
+  programari: Programare[] | undefined;
+  pacient: User[] | undefined;
 }
 
-export const PacientiPage = ({ }: DetaliiClinicaProps) => {
-  const pacienti = mockedDoctori[1].programari;
+export const PacientiPage = ({
+  doctor,
+  programari,
+  pacient,
+}: PacientiPageProps) => {
+  // const pacienti = doctor?.programari;
+  console.log("doctor", doctor);
+  console.log("programare", programari);
+  if (pacient != undefined && programari != undefined)
+    console.log("pacienti", pacient[1]);
+
   return (
     <List
       style={{
@@ -26,11 +39,9 @@ export const PacientiPage = ({ }: DetaliiClinicaProps) => {
         hideOnSinglePage: true,
         style: { margin: "0px 500px 0px 0px" },
       }}
-      dataSource={pacienti}
-      renderItem={(pacient) => (
-        <PacientItem
-          pacient={pacient.pacient}
-        ></PacientItem>
+      dataSource={programari}
+      renderItem={(programari) => (
+        <PacientItem programare={programari}></PacientItem>
       )}
     />
   );

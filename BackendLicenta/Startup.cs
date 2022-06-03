@@ -31,7 +31,7 @@ namespace BackendLicenta
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddDbContext<GeneralContext>(options =>
             {
                 options.UseSqlServer($"Server=DESKTOP-36P4EF1\\SQLEXPRESS;Integrated Security=SSPI;Database=BazaDeDate;MultipleActiveResultSets=true");
@@ -82,6 +82,7 @@ namespace BackendLicenta
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(o => o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

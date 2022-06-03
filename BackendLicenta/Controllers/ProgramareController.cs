@@ -1,6 +1,7 @@
 ﻿using BackendLicenta.Context;
 using BackendLicenta.Models;
 using BackendLicenta.Requests.TratamentRequests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ namespace BackendLicenta.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetProgramare()
         {
             var programare = await context.Programare.ToListAsync();
@@ -25,9 +27,10 @@ namespace BackendLicenta.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> AdaugareProgramare(CreateProgramareRequest request)
-        {
-            await context.Pacient.Where(p => p.PacientCNP == request.PacientCNP).Include(p => p.Programare).FirstOrDefaultAsync();
+        {   
+            await context.Pacient.Where(p => p.PacientCNP == request.PacientCNP).Include(p=>p.Programare).FirstOrDefaultAsync();
             Pacient pacient = context.Pacient.Where(p => p.PacientCNP == request.PacientCNP).FirstOrDefault();
             if (pacient == null)
             {
@@ -36,8 +39,8 @@ namespace BackendLicenta.Controllers
             pacient.Programare.Add(new ProgramarePacient()
             { PacientId=pacient.Id,
             Detalii_aditionale=request.Detalii_aditionale,
-            Data_programarii=request.Data_programarii
-
+            Data_programarii=request.Data_programarii,
+            DoctorId=request.DoctorId
             }) ;
 
 

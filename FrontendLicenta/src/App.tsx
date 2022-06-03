@@ -10,7 +10,7 @@ import { mockedClinici } from "./common/HardcodedData";
 import { Autentificare } from "./components/Autentificare/Autentificare";
 import { PacientiPage } from "./components/PacientiPage/Pacienti";
 import { ProgramarePage } from "./components/PacientiPage/PaginaProgramare";
-import HomePageMain from "./components/SymptomChecker/HomePageMain";
+import HomePageMain from "./components/medical-symptom-checker-master/src/HomePageMain";
 
 export const App = () => {
   const {
@@ -26,6 +26,10 @@ export const App = () => {
     navigateToPacientiPage,
     navigateToSymptomChecker,
     clinicaActuala,
+    clinici,
+    doctori,
+    programari,
+    pacienti,
   } = useApp();
   return (
     <div>
@@ -50,11 +54,16 @@ export const App = () => {
         ></Autentificare>
         <HealthProblemPage navigateToClinics={navigateToClinics} />
         <Clinics
+          clinici={clinici}
           navigateToAppointment={navigateToAppointment}
           setClinicaActuala={setClinicaActuala}
         />
-        <DetaliiClinica />
-        <PacientiPage></PacientiPage>
+        <DetaliiClinica clinicaActuala={clinicaActuala}/>
+        <PacientiPage
+          doctor={doctori}
+          programari={programari}
+          pacient={pacienti}
+        ></PacientiPage>
         <HomePageMain></HomePageMain>
       </Navigation>
     </div>

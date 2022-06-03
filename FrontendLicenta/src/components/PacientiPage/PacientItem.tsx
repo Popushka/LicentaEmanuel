@@ -6,15 +6,15 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import { User } from "../../common/common";
+import { Programare, User } from "../../common/common";
 import { useState } from "react";
 import { ProgramarePage } from "./PaginaProgramare";
 import { Modal } from "antd";
 
 export interface PacientiItemInterface {
-  pacient: User;
+  programare: Programare;
 }
-export const PacientItem = ({ pacient }: PacientiItemInterface) => {
+export const PacientItem = ({ programare }: PacientiItemInterface) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -38,7 +38,7 @@ export const PacientItem = ({ pacient }: PacientiItemInterface) => {
           />
         </ListItemAvatar>
         <ListItemText
-          primary={pacient.nume + " " + pacient.prenume}
+          primary={programare.pacient.nume + " " + programare.pacient.prenume}
           secondary={
             <React.Fragment>
               <Typography
@@ -47,7 +47,7 @@ export const PacientItem = ({ pacient }: PacientiItemInterface) => {
                 variant="body2"
                 color="text.primary"
               ></Typography>
-              Varsta:{pacient.varsta}
+              Varsta:{programare.pacient.varsta}
             </React.Fragment>
           }
         />
