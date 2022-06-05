@@ -27,7 +27,7 @@ namespace BackendLicenta.Repos
             var pacient = new Pacient()
             {   Id=request.Id,
                 Nume_utilizator = request.Nume_utilizator.ToLower(),
-                Parola = password,
+                Parola = request.Password,
                 Email = request.Email,
                 Nume=request.Nume,
                 Prenume=request.Prenume,

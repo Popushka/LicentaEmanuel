@@ -13,8 +13,12 @@ import { Modal } from "antd";
 
 export interface PacientiItemInterface {
   programare: Programare;
+  isDetalii: boolean;
 }
-export const PacientItem = ({ programare }: PacientiItemInterface) => {
+export const PacientItem = ({
+  programare,
+  isDetalii,
+}: PacientiItemInterface) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -23,7 +27,7 @@ export const PacientItem = ({ programare }: PacientiItemInterface) => {
   const handleOk = () => {
     setIsModalVisible(false);
   };
-
+  const statusProgramare = programare.status ? "Activa" : "Inactiva";
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -38,7 +42,11 @@ export const PacientItem = ({ programare }: PacientiItemInterface) => {
           />
         </ListItemAvatar>
         <ListItemText
-          primary={programare.pacient.nume + " " + programare.pacient.prenume}
+          primary={
+            isDetalii
+              ? programare.pacient.diagnostic
+              : programare.pacient?.nume + " " + programare.pacient?.prenume
+          }
           secondary={
             <React.Fragment>
               <Typography
@@ -47,12 +55,14 @@ export const PacientItem = ({ programare }: PacientiItemInterface) => {
                 variant="body2"
                 color="text.primary"
               ></Typography>
-              Varsta:{programare.pacient.varsta}
+              Varsta:{programare.pacient?.varsta}
             </React.Fragment>
           }
         />
+        <ListItemText
+          primary={<React.Fragment> Status: {statusProgramare}</React.Fragment>}
+        />
         <Button
-          style={{ marginTop: "13px" }}
           size="small"
           color="info"
           variant="outlined"
@@ -68,7 +78,7 @@ export const PacientItem = ({ programare }: PacientiItemInterface) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <ProgramarePage></ProgramarePage>
+        <ProgramarePage programare={programare}></ProgramarePage>
       </Modal>
     </div>
   );

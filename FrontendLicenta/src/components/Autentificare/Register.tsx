@@ -66,6 +66,30 @@ export const ModalRegister = ({ isDoctor }: ModalRegisterProps) => {
       >
         <Input type="password" placeholder="Parola" />
       </Form.Item>
+      <Form.Item
+        name={["user", "nume"]}
+        label="Nume"
+        rules={[{ required: true }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name={["user", "prenume"]}
+        label="Prenume"
+        rules={[{ required: true }]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        name={["user", "varsta"]}
+        label="Varsta"
+        rules={[{ type: "number", min: 0, max: 99 }]}
+      >
+        <InputNumber />
+      </Form.Item>
+      <Form.Item name={["user", "CNP"]} label="CNP">
+        <InputNumber minLength={13} maxLength={13} style={{ width: "135px" }} />
+      </Form.Item>
     </Form>
   );
 };

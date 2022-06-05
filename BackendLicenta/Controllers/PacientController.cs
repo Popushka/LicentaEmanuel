@@ -1,5 +1,7 @@
 ﻿using BackendLicenta.Context;
 using BackendLicenta.Interaction;
+using BackendLicenta.Interactions;
+using BackendLicenta.Models;
 using BackendLicenta.Repos;
 using BackendLicenta.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -32,8 +34,8 @@ namespace BackendLicenta.Controllers
         {
             var encryptedUser=await context.Pacient.Where(u => u.Nume_utilizator == numeUtilizator).FirstOrDefaultAsync();
             
-            var parola = EncryptLibrary.DecryptString(configuration["Encription:Secret"], encryptedUser.Parola);
-            encryptedUser.Parola = parola;
+           // var parola = EncryptLibrary.DecryptString(configuration["Encription:Secret"], encryptedUser.Parola);
+           // encryptedUser.Parola = parola;
             var user = encryptedUser;
             if (await context.Pacient.Where(u => u.Parola.Equals(password)).FirstOrDefaultAsync() == null)
                 return BadRequest("parola nu e corecta");
@@ -41,7 +43,22 @@ namespace BackendLicenta.Controllers
                 return BadRequest("medicul nu exista");
             return Ok(user);
         }
-        
+        [HttpPut]
+        public async Task<IActionResult> AdaugareDiagnostic(AdaugaDiagnosticRequest request)
+        {
+
+            await context.Pacient.Where(m => m.PacientCNP == request.PacientCNP).LoadAsync();
+            Pacient pacient = await context.Pacient.Where(m => m.PacientCNP == request.PacientCNP).FirstOrDefaultAsync();
+            if (pacient == null)
+            {
+                return BadRequest("Nu exista un pacient cu acest cnp!");
+            }
+
+            pacient.Diagnostic = request.Diagnostic;
+
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> CreateUser(CreatePacientRequest request)

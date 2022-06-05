@@ -26,6 +26,7 @@ export interface Programare {
   pacient: User;
   data_programarii: string;
   detalii_aditionale: string;
+  status: boolean;
 }
 
 export interface Doctori {

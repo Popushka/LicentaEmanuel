@@ -3,29 +3,20 @@ import { Doctori, Programare, User } from "../../common/common";
 import { mockedDoctori, mockedProgramari } from "../../common/HardcodedData";
 import { PacientItem } from "./PacientItem";
 export interface PacientiPageProps {
-  doctor: Doctori[] | undefined;
   programari: Programare[] | undefined;
-  pacient: User[] | undefined;
+  isDetalii: boolean;
 }
 
-export const PacientiPage = ({
-  doctor,
-  programari,
-  pacient,
-}: PacientiPageProps) => {
-  // const pacienti = doctor?.programari;
-  console.log("doctor", doctor);
+export const PacientiPage = ({ programari, isDetalii }: PacientiPageProps) => {
   console.log("programare", programari);
-  if (pacient != undefined && programari != undefined)
-    console.log("pacienti", pacient[1]);
 
   return (
     <List
       style={{
+        marginLeft: isDetalii ? "" : "570px",
         width: "100%",
         maxWidth: 700,
         marginTop: "30px",
-        marginLeft: "570px",
       }}
       itemLayout="vertical"
       size="large"
@@ -41,7 +32,7 @@ export const PacientiPage = ({
       }}
       dataSource={programari}
       renderItem={(programari) => (
-        <PacientItem programare={programari}></PacientItem>
+        <PacientItem isDetalii={isDetalii} programare={programari}></PacientItem>
       )}
     />
   );

@@ -15,10 +15,13 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { mockedProgramari } from "../../common/HardcodedData";
 import BodyMap from "../BodyMap";
+import { Programare, User } from "../../common/common";
 
-export interface ProgramarePageProps {}
+export interface ProgramarePageProps {
+  programare: Programare;
+}
 
-export const ProgramarePage = ({}: ProgramarePageProps) => {
+export const ProgramarePage = ({ programare }: ProgramarePageProps) => {
   const onChange = (values: any) => {
     console.log(values);
   };
@@ -38,7 +41,7 @@ export const ProgramarePage = ({}: ProgramarePageProps) => {
     setIsModalVisible(false);
   };
   const [value, setValue] = React.useState<Date | null>(
-    new Date(mockedProgramari[1].data_programarii)
+    new Date(programare.data_programarii)
   );
   return (
     <div style={{}}>
@@ -49,26 +52,24 @@ export const ProgramarePage = ({}: ProgramarePageProps) => {
         layout="horizontal"
       >
         <Form.Item name={["user", "nume"]} label="Nume">
-          <Input defaultValue={mockedProgramari[1].pacient.nume} />
+          <Input defaultValue={programare.pacient.nume} />
         </Form.Item>
         <Form.Item name={["user", "prenume"]} label="Prenume">
-          <Input defaultValue={mockedProgramari[1].pacient.prenume} />
+          <Input defaultValue={programare.pacient.prenume} />
         </Form.Item>
         <Form.Item
           name={["user", "varsta"]}
           label="Varsta"
           rules={[{ type: "number", min: 0, max: 99 }]}
         >
-          <InputNumber defaultValue={mockedProgramari[1].pacient.varsta} />
+          <InputNumber defaultValue={programare.pacient.varsta} />
         </Form.Item>
         <Form.Item label="Diagnostic">
-          <Input.TextArea
-            defaultValue={mockedProgramari[1].pacient.diagnostic}
-          />
+          <Input.TextArea defaultValue={programare.pacient.diagnostic} />
         </Form.Item>
 
         <Form.Item name={["user", "detalii"]} label="Detalii">
-          <Input.TextArea defaultValue={mockedProgramari[1].pacient.detalii} />
+          <Input.TextArea defaultValue={programare.pacient.detalii} />
         </Form.Item>
         <Form.Item label="Data">
           <LocalizationProvider dateAdapter={AdapterDateFns}>

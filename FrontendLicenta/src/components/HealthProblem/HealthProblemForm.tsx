@@ -1,5 +1,20 @@
 import * as React from "react";
-import { Form, Input, InputNumber, Button, Cascader } from "antd";
+import {
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  Cascader,
+  Card,
+  Avatar,
+  Modal,
+} from "antd";
+import { User } from "../../common/common";
+import Disease from "../medical-symptom-checker-master/src/components/Disease/Disease";
+import Meta from "antd/lib/card/Meta";
+import { ProgramarePage } from "../PacientiPage/PaginaProgramare";
+import { mockedProgramari } from "../../common/HardcodedData";
+import { PacientiPage } from "../PacientiPage/Pacienti";
 
 const layout = {
   labelCol: { span: 8 },
@@ -28,10 +43,14 @@ const options = [
 ];
 export interface HealthProblemFormProps {
   navigateToClinics: () => void;
+  userActual: User | undefined;
+  navigateToAutodiagnosticare: () => void;
 }
 
 export const HealthProblemForm = ({
   navigateToClinics,
+  navigateToAutodiagnosticare,
+  userActual,
 }: HealthProblemFormProps) => {
   const onChange = (values: any) => {
     console.log(values);
@@ -40,6 +59,22 @@ export const HealthProblemForm = ({
     console.log(values);
     navigateToClinics();
   };
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [isDetalii, setIsDetalii] = React.useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+    setIsDetalii(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    setIsDetalii(false);
+  };
+  console.log("userActual:", userActual);
   return (
     <div
       style={{
@@ -48,6 +83,22 @@ export const HealthProblemForm = ({
         marginTop: "200px",
       }}
     >
+      {" "}
+      <Button
+        style={{
+          marginTop: " -100px",
+          marginLeft: " -500px",
+          marginRight: " 300px",
+        }}
+        type="default"
+        htmlType="button"
+        onClick={(e) => {
+          setIsDetalii(true);
+          setIsModalVisible(true);
+        }}
+      >
+        Programare:
+      </Button>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Form
           {...layout}
@@ -55,49 +106,51 @@ export const HealthProblemForm = ({
           onFinish={onFinish}
           validateMessages={validateMessages}
         >
-          <Form.Item
-            name={["user", "nume"]}
-            label="Nume"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name={["user", "prenume"]}
-            label="Prenume"
-            rules={[{ required: true }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name={["user", "varsta"]}
-            label="Varsta"
-            rules={[{ type: "number", min: 0, max: 99 }]}
-          >
-            <InputNumber />
-          </Form.Item>
-          <Form.Item
-            name={["user", "CNP"]}
-            label="CNP"
-          >
-            <InputNumber minLength={13} maxLength={13}  style={{width:"135px"}} />
-          </Form.Item>
           <Form.Item label="Diagnostic">
-            <Cascader
-              options={options}
-              onChange={onChange}
-              placeholder="Please select"
-            />
+            <Card style={{ width: 300 }}>
+              <Meta
+                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                title={userActual?.nume}
+                description={userActual?.diagnostic}
+              />
+            </Card>
           </Form.Item>
 
-          <Form.Item name={["user", "detalii"]} label="Detalii">
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-            <Button type="primary" htmlType="submit">
-              Submit
+          <Form.Item
+            style={{ display: "flex", alignContent: "center" }}
+            wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+          >
+            <Button
+              style={{ marginLeft: "50px" }}
+              type="primary"
+              htmlType="button"
+              onClick={(e) => {
+                navigateToAutodiagnosticare();
+              }}
+            >
+              Autodiagnosticare din nou
+            </Button>
+            <Button
+              style={{ marginTop: "20px", marginLeft: "80px" }}
+              type="default"
+              htmlType="submit"
+            >
+              Cautare Clinici
             </Button>
           </Form.Item>
+
+          <Modal
+            title="Programare"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <PacientiPage
+              isDetalii={isDetalii}
+              programari={mockedProgramari}
+            ></PacientiPage>
+            {/* <ProgramarePage programare={userActual?.programareId}></ProgramarePage> */}
+          </Modal>
         </Form>
       </div>
     </div>

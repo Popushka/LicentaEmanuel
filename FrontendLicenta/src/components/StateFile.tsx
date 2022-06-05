@@ -22,6 +22,7 @@ export const useApp = () => {
   const [pacienti, setPacienti] = useState<User[]>([]);
   const [clinici, setClinici] = useState<Clinica[]>();
   const [programari, setProgramari] = useState<Programare[]>();
+  const [userActual, setUserActual] = useState<User>();
   const [user, setUser] = useState<User>();
   const [bearer, setBearer] = useState<any>([]);
   const getBearer = async () => {
@@ -42,6 +43,15 @@ export const useApp = () => {
   const getPacienti = async () => {
     axios
       .get("https://localhost:44386/pacient")
+      .then(async (raspuns) => {
+        setPacienti(raspuns.data);
+        console.log(raspuns.data);
+      })
+      .catch((e) => console.log(e));
+  };
+  const adaugareDiagnostic = async () => {
+    axios
+      .put("  https://localhost:44386/pacient",{ pacientCNP: "string", diagnostic: "string" })
       .then(async (raspuns) => {
         setPacienti(raspuns.data);
         console.log(raspuns.data);
@@ -93,10 +103,10 @@ export const useApp = () => {
       .catch((e) => console.log(e));
   };
 
-  const getUserActual = async () => {
+  const getUserActual = async (nume_utilizator: string, parola: string) => {
     axios
       .get("https://localhost:44386/pacient/user_actual", {
-        params: { numeUtilizator: "", password: "" },
+        params: { numeUtilizator: nume_utilizator, password: parola },
       })
       .then(async (raspuns) => {
         setClinici(raspuns.data);
@@ -141,6 +151,7 @@ export const useApp = () => {
     setBackButtonVisible(true);
     setHeaderVisible(true);
     setHeaderTitle("Diagnosticarea problemei");
+    console.log("user Actual", userActual);
   };
   const navigateToAppointment = () => {
     setScreens(Screens.ClinicDetails);
@@ -166,5 +177,7 @@ export const useApp = () => {
     doctori,
     programari,
     pacienti,
+    setUserActual,
+    userActual,
   };
 };

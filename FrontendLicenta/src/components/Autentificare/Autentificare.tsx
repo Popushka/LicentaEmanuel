@@ -4,18 +4,22 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
 import { ModalRegister } from "./Register";
+import { User } from "../../common/common";
+import axios from "axios";
 
 export interface LoginProps {
   navigateToHealthProblems: () => void;
   navigateToAutentificare: () => void;
   navigateToPacientiPage: () => void;
   navigateToSymptomChecker: () => void;
+  setUserActual: (arg0: User) => void;
 }
 
 export const Autentificare = ({
   navigateToHealthProblems,
   navigateToAutentificare,
   navigateToPacientiPage,
+  setUserActual,
   navigateToSymptomChecker,
 }: LoginProps) => {
   navigateToAutentificare();
@@ -33,6 +37,9 @@ export const Autentificare = ({
 
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [isDoctor, setIsDoctor] = React.useState(false);
+  const [nume_utilizator, setNume_Utilizator] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   console.log(isDoctor);
   const showModal = () => {
     setIsModalVisible(true);
@@ -41,6 +48,7 @@ export const Autentificare = ({
   const handleOk = () => {
     setIsModalVisible(false);
     navigateToSymptomChecker();
+    //navigateToHealthProblems();
   };
 
   const handleCancel = () => {
@@ -99,6 +107,9 @@ export const Autentificare = ({
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Nume Utilizator"
+              onChange={(e) => {
+                setNume_Utilizator(e.currentTarget.value);
+              }}
             />
           </Form.Item>
           <Form.Item
@@ -115,6 +126,9 @@ export const Autentificare = ({
               size="middle"
               type="password"
               placeholder="Parola"
+              onChange={(e) => {
+                setPassword(e.currentTarget.value);
+              }}
             />
           </Form.Item>
           {alignment === "doctor" ? (
@@ -163,8 +177,21 @@ export const Autentificare = ({
               type="primary"
               className="login-form-button"
               onClick={() => {
-                if (isDoctor === false) navigateToHealthProblems();
-                else navigateToPacientiPage();
+                if (isDoctor === false) {
+                  axios
+                    .get("https://localhost:44386/pacient/user_actual", {
+                      params: {
+                        numeUtilizator: nume_utilizator,
+                        password: password,
+                      },
+                    })
+                    .then(async (raspuns) => {
+                      setUserActual(raspuns.data);
+                      console.log(raspuns.data);
+                    })
+                    .catch((e) => console.log(e));
+                  navigateToHealthProblems();
+                } else navigateToPacientiPage();
               }}
             >
               Log in
