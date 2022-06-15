@@ -25,6 +25,34 @@ export const useApp = () => {
   const [userActual, setUserActual] = useState<User>();
   const [user, setUser] = useState<User>();
   const [bearer, setBearer] = useState<any>([]);
+  const [doctorActual, setDoctorActual] = useState<Doctori>({
+    nume: "",
+    prenume: "",
+    programari: [
+      {
+        id: 0,
+        pacient: {
+          id: 0,
+          nume: "",
+          prenume: "",
+          parola: "",
+          email: "",
+          nume_utilizator: "",
+          varsta: 0,
+          diagnostic: "",
+          detalii: "",
+          pacientCNP: 0,
+          programareId: 0,
+        },
+        data_programarii: "",
+        detalii_aditionale: "",
+        status: false,
+      },
+    ],
+    imagine: "",
+    descriere: "",
+    codParafa: "",
+  });
   const getBearer = async () => {
     axios
       .post<string>(
@@ -51,7 +79,10 @@ export const useApp = () => {
   };
   const adaugareDiagnostic = async () => {
     axios
-      .put("  https://localhost:44386/pacient",{ pacientCNP: "string", diagnostic: "string" })
+      .put("  https://localhost:44386/pacient", {
+        pacientCNP: "string",
+        diagnostic: "string",
+      })
       .then(async (raspuns) => {
         setPacienti(raspuns.data);
         console.log(raspuns.data);
@@ -152,6 +183,7 @@ export const useApp = () => {
     setHeaderVisible(true);
     setHeaderTitle("Diagnosticarea problemei");
     console.log("user Actual", userActual);
+    getProgramare();
   };
   const navigateToAppointment = () => {
     setScreens(Screens.ClinicDetails);
@@ -179,5 +211,7 @@ export const useApp = () => {
     pacienti,
     setUserActual,
     userActual,
+    setDoctorActual,
+    doctorActual,
   };
 };

@@ -45,7 +45,7 @@ namespace WebApi.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),//subiectul
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),//id-ul tokenului
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()),//data trimiterii
-                new Claim("Id",pacient.Id.ToString()),
+                new Claim("PacientId",pacient.PacientId.ToString()),
                 new Claim("Nume_utilizator",pacient.Nume_utilizator)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));//secretul pt encriptare

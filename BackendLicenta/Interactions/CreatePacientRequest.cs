@@ -6,7 +6,8 @@ namespace BackendLicenta.Interaction
 {
     public class CreatePacientRequest
     {
-        public int Id { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public int PacientId { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string Nume_utilizator { get; set; }
         [Required(AllowEmptyStrings = false)]
@@ -20,5 +21,6 @@ namespace BackendLicenta.Interaction
         public string Diagnostic { get; set; }
         public string Detalii { get; set; }
         public long PacientCNP { get; set; }
+        
     }
 }

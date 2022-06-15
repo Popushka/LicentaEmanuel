@@ -25,7 +25,7 @@ namespace BackendLicenta.Repos
         {
             string password = EncryptLibrary.EncryptString(configuration["Encription:Secret"], request.Password);
             var pacient = new Pacient()
-            {   Id=request.Id,
+            {
                 Nume_utilizator = request.Nume_utilizator.ToLower(),
                 Parola = request.Password,
                 Email = request.Email,
@@ -34,7 +34,8 @@ namespace BackendLicenta.Repos
                 Varsta=request.Varsta,
                 Diagnostic=request.Diagnostic,
                 Detalii=request.Detalii,
-                PacientCNP=request.PacientCNP
+                PacientCNP=request.PacientCNP,
+                PacientId=request.PacientId
             };
 
             context.Pacient.Add(pacient);

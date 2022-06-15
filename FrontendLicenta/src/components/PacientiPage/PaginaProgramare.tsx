@@ -52,24 +52,24 @@ export const ProgramarePage = ({ programare }: ProgramarePageProps) => {
         layout="horizontal"
       >
         <Form.Item name={["user", "nume"]} label="Nume">
-          <Input defaultValue={programare.pacient.nume} />
+          <Input defaultValue={programare.pacient?.nume} />
         </Form.Item>
         <Form.Item name={["user", "prenume"]} label="Prenume">
-          <Input defaultValue={programare.pacient.prenume} />
+          <Input defaultValue={programare.pacient?.prenume} />
         </Form.Item>
         <Form.Item
           name={["user", "varsta"]}
           label="Varsta"
           rules={[{ type: "number", min: 0, max: 99 }]}
         >
-          <InputNumber defaultValue={programare.pacient.varsta} />
+          <InputNumber defaultValue={programare.pacient?.varsta} />
         </Form.Item>
         <Form.Item label="Diagnostic">
-          <Input.TextArea defaultValue={programare.pacient.diagnostic} />
+          <Input.TextArea defaultValue={programare.pacient?.diagnostic} />
         </Form.Item>
 
         <Form.Item name={["user", "detalii"]} label="Detalii">
-          <Input.TextArea defaultValue={programare.pacient.detalii} />
+          <Input.TextArea defaultValue={programare.pacient?.detalii} />
         </Form.Item>
         <Form.Item label="Data">
           <LocalizationProvider dateAdapter={AdapterDateFns}>

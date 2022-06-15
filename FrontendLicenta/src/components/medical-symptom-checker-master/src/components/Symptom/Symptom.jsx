@@ -6,6 +6,7 @@ import { Diseases } from "../../data/Diseases";
 
 //CSS
 import "./Symptom.css";
+import { Button } from "antd";
 
 
 // import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
@@ -183,9 +184,9 @@ class Symptom extends Component {
           </ul>
         </div>
         <div className="col-12 width-full display-flex flex-row flex-justify-start resetButton padding-left-2">
-          <button onClick={this.on_click_reset_button} className="usa-button usa-button--secondary">
+          <Button onClick={this.on_click_reset_button} className="usa-button usa-button--secondary" style={{marginLeft:"1rem"}}>
             Reset
-          </button>
+          </Button>
         </div>
       </div>
     );

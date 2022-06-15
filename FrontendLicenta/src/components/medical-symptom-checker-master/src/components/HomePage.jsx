@@ -7,10 +7,19 @@ import Symptom from "./Symptom/Symptom";
 import Disease from "./Disease/Disease";
 import { useApp } from "../../../StateFile";
 
-const withNavigateToHealthProblems = () => () => {
-  const navigateToHealthProblems = useApp();
-  return navigateToHealthProblems;
-};
+import { unmountComponentAtNode } from "react-dom";
+import { Button } from "antd";
+
+// const withNavigateToHealthProblems = () => () => {
+//   const navigateToHealthProblems = useApp();
+//   return navigateToHealthProblems;
+// };
+function withNavigateToHealthProblems(Component) {
+  return function WrappedComponent(props) {
+    const myHookValue = useApp();
+    return <Component {...props} myHookValue={myHookValue} />;
+  };
+}
 
 class HomePage extends Component {
   constructor(props) {
@@ -272,14 +281,7 @@ class HomePage extends Component {
     }
   };
   renderResetButton = () => {
-    return (
-      <button
-        className="usa-button usa-button--secondary"
-        onClick={this.symptomPage.current}
-      >
-        Reset
-      </button>
-    );
+    return <Button onClick={this.symptomPage.current}>Reset</Button>;
   };
   render() {
     const {
@@ -347,23 +349,28 @@ class HomePage extends Component {
                 <div
                   id="buttonsSection"
                   className="grid-row display-flex padding-left-2 padding-right-2 padding-top-2"
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <button
-                    disabled={this.state.current_page === "Acasa"}
-                    onClick={this.get_previous_page}
+                  <Button
+                    onClick={(e) => {
+                      if (this.state.current_page === "Acasa") {
+                        unmountComponentAtNode(document.getElementById("root"));
+                        window.location.reload(false);
+                      } else return this.get_previous_page();
+                    }}
                     className="usa-button usa-button--outline back"
                   >
                     Inapoi
-                  </button>
+                  </Button>
                   {/* {current_page === "Symptom" ? this.renderResetButton() : ""} */}
-                  <button
-                    className={`usa-button ${
+                  <Button
+                    className={
                       button_is_disabled ||
                       patient_2_next_button_disabled ||
                       user_symptom_length === 0
                         ? ""
                         : "next"
-                    }`}
+                    }
                     disabled={
                       button_is_disabled ||
                       patient_2_next_button_disabled ||
@@ -380,13 +387,14 @@ class HomePage extends Component {
                         let diseaseposs = this.state.disease_possibility;
                         //this.props.navigateToHealthProblem;
                         this.state.diagnostic = { usersym, diseaseposs };
-                        console.log("diagnostic", this.state.diagnostic);
-                        return this.get_next_page();
+                        console.log("diagnosticc", this.state.diagnostic);
+                        unmountComponentAtNode(document.getElementById("root"));
+                        window.location.reload(false);
                       } else return this.get_next_page();
                     }}
                   >
                     {this.state.button_name}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

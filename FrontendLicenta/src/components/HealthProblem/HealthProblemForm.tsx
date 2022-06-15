@@ -9,7 +9,7 @@ import {
   Avatar,
   Modal,
 } from "antd";
-import { User } from "../../common/common";
+import { Doctori, User } from "../../common/common";
 import Disease from "../medical-symptom-checker-master/src/components/Disease/Disease";
 import Meta from "antd/lib/card/Meta";
 import { ProgramarePage } from "../PacientiPage/PaginaProgramare";
@@ -45,12 +45,14 @@ export interface HealthProblemFormProps {
   navigateToClinics: () => void;
   userActual: User | undefined;
   navigateToAutodiagnosticare: () => void;
+  doctorActual: Doctori;
 }
 
 export const HealthProblemForm = ({
   navigateToClinics,
   navigateToAutodiagnosticare,
   userActual,
+  doctorActual,
 }: HealthProblemFormProps) => {
   const onChange = (values: any) => {
     console.log(values);
@@ -107,11 +109,16 @@ export const HealthProblemForm = ({
           validateMessages={validateMessages}
         >
           <Form.Item label="Diagnostic">
-            <Card style={{ width: 300 }}>
+            <Card style={{ width: 300, marginTop: "-2rem" }}>
               <Meta
-                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                avatar={
+                  <Avatar
+                    src="https://joeschmoe.io/api/v1/random"
+                    style={{ marginTop: "0.5rem" }}
+                  />
+                }
                 title={userActual?.nume}
-                description={userActual?.diagnostic}
+                description={userActual?.diagnostic || "fara diagnostic"}
               />
             </Card>
           </Form.Item>
@@ -146,6 +153,7 @@ export const HealthProblemForm = ({
             onCancel={handleCancel}
           >
             <PacientiPage
+              DoctorActual={doctorActual}
               isDetalii={isDetalii}
               programari={mockedProgramari}
             ></PacientiPage>

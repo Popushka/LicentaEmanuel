@@ -1,6 +1,7 @@
 import { Doctori, Clinica, Programare, User, Optiuni } from "./common";
 
 export const mockedUser: User = {
+  id:1,
   nume: "Emanuel",
   prenume: "Oltean",
   varsta: 21,
@@ -89,6 +90,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
   {
     nume: "Clinica 1",
@@ -100,6 +102,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
   {
     nume: "Clinica 1",
@@ -111,6 +114,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
   {
     nume: "Clinica 1",
@@ -122,6 +126,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
   {
     nume: "Clinica 1",
@@ -133,6 +138,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
   {
     nume: "Clinica 1",
@@ -144,6 +150,7 @@ export const mockedClinici: Clinica[] = [
     longitudine: 11,
     //doctorId: 1,
     //id: 1,
+    tratamente: "string",
   },
 ];
 

@@ -8,7 +8,7 @@ namespace BackendLicenta.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int PacientId { get; set; }
         public string Nume_utilizator { get; set; }
         public string Parola { get; set; }
         public string Email { get; set; }
@@ -18,6 +18,5 @@ namespace BackendLicenta.Models
         public string Diagnostic { get; set; }
         public string Detalii { get; set; }
         public long PacientCNP { get; set; }
-        public ICollection<ProgramarePacient> Programare { get; set; } = new List<ProgramarePacient>();
     }
 }

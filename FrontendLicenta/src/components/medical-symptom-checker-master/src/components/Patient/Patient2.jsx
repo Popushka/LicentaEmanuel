@@ -146,7 +146,7 @@ class Patient2 extends Component {
           </h2>
           <p> Selectați câte un răspuns pe fiecare rând </p>
         </div>
-        <div className="radioButtonDiv ">
+        <div className="radioButtonDiv" >
           <h3>Sunt supraponderal</h3>
           <form className="usa-form FormElement">
             <div className="usa-radio margin-x-1">
@@ -159,7 +159,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="overweight"
               />
-              <label className="usa-radio__label" for="overweight_Yes">
+              <label className="usa-radio__label" for="overweight_Yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -173,7 +173,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="overweight"
               />
-              <label className="usa-radio__label" for="overweight_No">
+              <label className="usa-radio__label" for="overweight_No"style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -187,7 +187,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="overweight"
               />
-              <label className="usa-radio__label" for="overweight_doesno">
+              <label className="usa-radio__label" for="overweight_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>
@@ -206,7 +206,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="cigarettes"
               />
-              <label className="usa-radio__label" for="cigarettes_yes">
+              <label className="usa-radio__label" for="cigarettes_yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -220,7 +220,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="cigarettes"
               />
-              <label className="usa-radio__label" for="cigarettes_no">
+              <label className="usa-radio__label" for="cigarettes_no" style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -234,7 +234,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="cigarettes"
               />
-              <label className="usa-radio__label" for="cigarettes_doesno">
+              <label className="usa-radio__label" for="cigarettes_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>
@@ -253,7 +253,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="injured"
               />
-              <label className="usa-radio__label" for="injured_yes">
+              <label className="usa-radio__label" for="injured_yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -267,7 +267,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="injured"
               />
-              <label className="usa-radio__label" for="injured_no">
+              <label className="usa-radio__label" for="injured_no" style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -281,7 +281,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="injured"
               />
-              <label className="usa-radio__label" for="injured_doesno">
+              <label className="usa-radio__label" for="injured_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>
@@ -300,7 +300,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="cholesterol"
               />
-              <label className="usa-radio__label" for="cholesterol_yes">
+              <label className="usa-radio__label" for="cholesterol_yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -314,7 +314,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="cholesterol"
               />
-              <label className="usa-radio__label" for="cholesterol_no">
+              <label className="usa-radio__label" for="cholesterol_no" style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -328,7 +328,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="cholesterol"
               />
-              <label className="usa-radio__label" for="cholesterol_doesno">
+              <label className="usa-radio__label" for="cholesterol_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>
@@ -347,7 +347,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="hypertensionl"
               />
-              <label className="usa-radio__label" for="hypertension_yes">
+              <label className="usa-radio__label" for="hypertension_yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -361,7 +361,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="hypertensionl"
               />
-              <label className="usa-radio__label" for="hypertension_no">
+              <label className="usa-radio__label" for="hypertension_no" style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -375,7 +375,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="hypertensionl"
               />
-              <label className="usa-radio__label" for="hypertension_doesno">
+              <label className="usa-radio__label" for="hypertension_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>
@@ -394,7 +394,7 @@ class Patient2 extends Component {
                 value={"Da"}
                 name="diabetes"
               />
-              <label className="usa-radio__label" for="diabetes_yes">
+              <label className="usa-radio__label" for="diabetes_yes" style={{marginRight:"1rem"}}>
                 Da
               </label>
             </div>
@@ -408,7 +408,7 @@ class Patient2 extends Component {
                 value={"Nu"}
                 name="diabetes"
               />
-              <label className="usa-radio__label" for="diabetes_no">
+              <label className="usa-radio__label" for="diabetes_no" style={{marginRight:"1rem"}}>
                 Nu
               </label>
             </div>
@@ -422,7 +422,7 @@ class Patient2 extends Component {
                 value={"Pacientul nu știe"}
                 name="diabetes"
               />
-              <label className="usa-radio__label" for="diabetes_doesno">
+              <label className="usa-radio__label" for="diabetes_doesno" style={{marginRight:"1rem"}}>
                 Nu stiu
               </label>
             </div>

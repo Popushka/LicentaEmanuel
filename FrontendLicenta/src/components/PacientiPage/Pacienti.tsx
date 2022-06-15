@@ -4,11 +4,17 @@ import { mockedDoctori, mockedProgramari } from "../../common/HardcodedData";
 import { PacientItem } from "./PacientItem";
 export interface PacientiPageProps {
   programari: Programare[] | undefined;
+  DoctorActual: Doctori;
   isDetalii: boolean;
+  // doctorActual: Doctori | undefined;
 }
 
-export const PacientiPage = ({ programari, isDetalii }: PacientiPageProps) => {
-  console.log("programare", programari);
+export const PacientiPage = ({
+  programari,
+  isDetalii,
+  DoctorActual,
+}: PacientiPageProps) => {
+  console.log("doctorActual1111", DoctorActual.programari);
 
   return (
     <List
@@ -30,10 +36,16 @@ export const PacientiPage = ({ programari, isDetalii }: PacientiPageProps) => {
         hideOnSinglePage: true,
         style: { margin: "0px 500px 0px 0px" },
       }}
-      dataSource={programari}
-      renderItem={(programari) => (
-        <PacientItem isDetalii={isDetalii} programare={programari}></PacientItem>
-      )}
+      dataSource={DoctorActual.programari}
+      renderItem={(programari) => {
+        console.log("programaripacient", programari);
+        return (
+          <PacientItem
+            isDetalii={isDetalii}
+            programare={programari}
+          ></PacientItem>
+        );
+      }}
     />
   );
 };

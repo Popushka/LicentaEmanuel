@@ -31,6 +31,7 @@ export const PacientItem = ({
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  console.log("pacient:", programare.pacient);
   return (
     <div>
       <ListItem>

@@ -4,8 +4,9 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
 import { ModalRegister } from "./Register";
-import { User } from "../../common/common";
+import { Doctori, User } from "../../common/common";
 import axios from "axios";
+import queryString from "query-string";
 
 export interface LoginProps {
   navigateToHealthProblems: () => void;
@@ -13,6 +14,7 @@ export interface LoginProps {
   navigateToPacientiPage: () => void;
   navigateToSymptomChecker: () => void;
   setUserActual: (arg0: User) => void;
+  setDoctorActual: (arg0: Doctori) => void;
 }
 
 export const Autentificare = ({
@@ -20,6 +22,7 @@ export const Autentificare = ({
   navigateToAutentificare,
   navigateToPacientiPage,
   setUserActual,
+  setDoctorActual,
   navigateToSymptomChecker,
 }: LoginProps) => {
   navigateToAutentificare();
@@ -39,6 +42,20 @@ export const Autentificare = ({
   const [isDoctor, setIsDoctor] = React.useState(false);
   const [nume_utilizator, setNume_Utilizator] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [cod_parafa, setCod_Parafa] = React.useState("");
+  const [datePacient, setDatePacient] = React.useState<User>({
+    id: 0,
+    nume: "",
+    prenume: "",
+    nume_utilizator: "",
+    parola: "",
+    email: "",
+    varsta: 0,
+    diagnostic: "",
+    detalii: "",
+    pacientCNP: 0,
+    programareId: 0,
+  });
 
   console.log(isDoctor);
   const showModal = () => {
@@ -47,6 +64,28 @@ export const Autentificare = ({
 
   const handleOk = () => {
     setIsModalVisible(false);
+    console.log("datePacient??:", datePacient);
+    if (datePacient != undefined)
+      axios
+        .post(
+          "  https://localhost:44386/pacient",
+          {
+            Nume_utilizator: datePacient.nume_utilizator,
+            Password: datePacient.parola,
+            Email: datePacient.email,
+            Nume: datePacient.nume,
+            Prenume: datePacient.prenume,
+            Varsta: datePacient.varsta,
+            Diagnostic: datePacient.diagnostic,
+            Detalii: "string",
+            PacientCNP: datePacient.pacientCNP,
+          },
+          { headers: { "Content-Type": "application/json" } }
+        )
+        .then(async (raspuns) => {
+          console.log(raspuns.data);
+        })
+        .catch((e) => console.log(e));
     navigateToSymptomChecker();
     //navigateToHealthProblems();
   };
@@ -146,6 +185,9 @@ export const Autentificare = ({
                 size="middle"
                 type="cod_parafa"
                 placeholder="Cod Parafa"
+                onChange={(e) => {
+                  setCod_Parafa(e.currentTarget.value);
+                }}
               />
             </Form.Item>
           ) : (
@@ -177,6 +219,8 @@ export const Autentificare = ({
               type="primary"
               className="login-form-button"
               onClick={() => {
+                console.log("nume_utilizator:", nume_utilizator);
+                console.log("parola", password);
                 if (isDoctor === false) {
                   axios
                     .get("https://localhost:44386/pacient/user_actual", {
@@ -191,7 +235,20 @@ export const Autentificare = ({
                     })
                     .catch((e) => console.log(e));
                   navigateToHealthProblems();
-                } else navigateToPacientiPage();
+                } else {
+                  axios
+                    .get("https://localhost:44386/doctor/doctor_actual", {
+                      params: {
+                        codParafa: cod_parafa,
+                      },
+                    })
+                    .then(async (raspuns) => {
+                      setDoctorActual(raspuns.data);
+                      console.log("doctorActual", raspuns.data);
+                    })
+                    .catch((e) => console.log(e));
+                  navigateToPacientiPage();
+                }
               }}
             >
               Log in
@@ -215,7 +272,10 @@ export const Autentificare = ({
               onOk={handleOk}
               onCancel={handleCancel}
             >
-              <ModalRegister isDoctor={isDoctor}></ModalRegister>
+              <ModalRegister
+                setDatePacient={setDatePacient}
+                isDoctor={isDoctor}
+              ></ModalRegister>
             </Modal>
           ) : null}
         </Form>

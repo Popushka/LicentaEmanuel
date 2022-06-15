@@ -14,16 +14,19 @@
   border-radius: 0.5rem;
 }
 .shoPageSection {
-  height: 55vh;
+  height: 52.5vh;
   overflow-y: auto;
+  margin-left:3rem
 }
 #buttonsSection {
+  margin-left:"2px";
   justify-content: space-between;
   /* padding: 1rem 2rem; */
-  border-top: 1px solid #cfd6dd;
 }
 #buttonsSection > button {
   margin-bottom: 0.5rem;
+  margin-left:0.8rem;
+  margin-right:0.8rem;
 }
 
 @media (min-width: 64em) {

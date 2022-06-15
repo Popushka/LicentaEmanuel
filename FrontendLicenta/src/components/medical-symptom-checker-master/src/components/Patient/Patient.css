@@ -21,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: left;
+  margin-right:10rem
 }
 
 @media (max-width: 63.938em) {

@@ -6,9 +6,11 @@ export interface Clinica {
   latitudine: number;
   longitudine: number;
   adresa: string;
+  tratamente: string;
 }
 
 export interface User {
+  id: number;
   nume: string;
   prenume: string;
   parola: string;
