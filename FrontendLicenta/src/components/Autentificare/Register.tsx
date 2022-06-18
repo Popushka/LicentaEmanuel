@@ -46,7 +46,7 @@ export const ModalRegister = ({
     new Date("2022-01-01T00:00:00.000Z")
   );
   let datePacient: User = {
-    id: 0,
+    pacientId: 0,
     detalii: "",
     diagnostic: "",
     email: "",

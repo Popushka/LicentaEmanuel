@@ -117,7 +117,7 @@ export const HealthProblemForm = ({
                     style={{ marginTop: "0.5rem" }}
                   />
                 }
-                title={userActual?.nume}
+                title={userActual?.nume+" "+userActual?.prenume}
                 description={userActual?.diagnostic || "fara diagnostic"}
               />
             </Card>

@@ -5,8 +5,9 @@ import { ClinicsList } from "./ClinicsList";
 export interface ClinicsProps {
   navigateToAppointment: () => void;
   setClinicaActuala: (clinica: Clinica) => void;
-  clinici: Clinica[] | undefined;
+  clinici: Clinica[];
   userActual: User | undefined;
+  clinicaActuala: Clinica;
 }
 
 export const Clinics = ({
@@ -14,6 +15,7 @@ export const Clinics = ({
   setClinicaActuala,
   clinici,
   userActual,
+  clinicaActuala,
 }: ClinicsProps) => {
   return (
     <div
@@ -24,6 +26,7 @@ export const Clinics = ({
         clinici={clinici}
         navigateToAppointment={navigateToAppointment}
         setClinicaActuala={setClinicaActuala}
+        clinicaActuala={clinicaActuala}
       />
     </div>
   );

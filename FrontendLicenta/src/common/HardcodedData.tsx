@@ -1,7 +1,7 @@
 import { Doctori, Clinica, Programare, User, Optiuni } from "./common";
 
 export const mockedUser: User = {
-  id:1,
+  pacientId: 1,
   nume: "Emanuel",
   prenume: "Oltean",
   varsta: 21,
@@ -33,6 +33,7 @@ export const mockedProgramari: Programare[] = [
 
 export const mockedDoctori: Doctori[] = [
   {
+    doctorId: 0,
     nume: "Stefan",
     prenume: "Carina",
     programari: mockedProgramari,
@@ -42,6 +43,7 @@ export const mockedDoctori: Doctori[] = [
     codParafa: "1234",
   },
   {
+    doctorId: 0,
     nume: "Paul",
     prenume: "",
     programari: mockedProgramari,
@@ -51,6 +53,7 @@ export const mockedDoctori: Doctori[] = [
     codParafa: "1025",
   },
   {
+    doctorId: 0,
     nume: "Oltean",
     prenume: "Emanuel",
     programari: mockedProgramari,
@@ -60,6 +63,7 @@ export const mockedDoctori: Doctori[] = [
     codParafa: "1133",
   },
   {
+    doctorId: 0,
     nume: "Oltean",
     prenume: "Emanuel",
     programari: mockedProgramari,
@@ -69,6 +73,7 @@ export const mockedDoctori: Doctori[] = [
     codParafa: "asd",
   },
   {
+    doctorId: 0,
     nume: "Piscot5",
     prenume: "Iscot",
     programari: mockedProgramari,
@@ -81,6 +86,7 @@ export const mockedDoctori: Doctori[] = [
 
 export const mockedClinici: Clinica[] = [
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",
@@ -93,6 +99,7 @@ export const mockedClinici: Clinica[] = [
     tratamente: "string",
   },
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",
@@ -105,6 +112,7 @@ export const mockedClinici: Clinica[] = [
     tratamente: "string",
   },
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",
@@ -117,6 +125,7 @@ export const mockedClinici: Clinica[] = [
     tratamente: "string",
   },
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",
@@ -129,6 +138,7 @@ export const mockedClinici: Clinica[] = [
     tratamente: "string",
   },
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",
@@ -141,6 +151,7 @@ export const mockedClinici: Clinica[] = [
     tratamente: "string",
   },
   {
+    clinicaId: 0,
     nume: "Clinica 1",
     adresa: "Revolutiei 192",
     descriere: "descriere",

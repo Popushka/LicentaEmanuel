@@ -44,7 +44,7 @@ export const Autentificare = ({
   const [password, setPassword] = React.useState("");
   const [cod_parafa, setCod_Parafa] = React.useState("");
   const [datePacient, setDatePacient] = React.useState<User>({
-    id: 0,
+    pacientId: 0,
     nume: "",
     prenume: "",
     nume_utilizator: "",
@@ -76,7 +76,7 @@ export const Autentificare = ({
             Nume: datePacient.nume,
             Prenume: datePacient.prenume,
             Varsta: datePacient.varsta,
-            Diagnostic: datePacient.diagnostic,
+            Diagnostic: " ",
             Detalii: "string",
             PacientCNP: datePacient.pacientCNP,
           },

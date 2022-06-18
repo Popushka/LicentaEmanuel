@@ -59,18 +59,22 @@ export const App = () => {
           navigateToAutentificare={navigateToAutentificare}
         ></Autentificare>
         <HealthProblemPage
-        doctorActual={doctorActual}
+          doctorActual={doctorActual}
           navigateToAutodiagnosticare={navigateToSymptomChecker}
           userActual={userActual}
           navigateToClinics={navigateToClinics}
         />
         <Clinics
+          clinicaActuala={clinicaActuala}
           userActual={userActual}
           clinici={clinici}
           navigateToAppointment={navigateToAppointment}
           setClinicaActuala={setClinicaActuala}
         />
-        <DetaliiClinica clinicaActuala={clinicaActuala} />
+        <DetaliiClinica
+          userActual={userActual}
+          clinicaActuala={clinicaActuala}
+        />
         <PacientiPage
           DoctorActual={doctorActual}
           isDetalii={false}

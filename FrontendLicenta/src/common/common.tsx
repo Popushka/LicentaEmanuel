@@ -1,4 +1,5 @@
 export interface Clinica {
+  clinicaId: number;
   nume: string;
   descriere: string;
   imagine: string;
@@ -10,7 +11,7 @@ export interface Clinica {
 }
 
 export interface User {
-  id: number;
+  pacientId: number;
   nume: string;
   prenume: string;
   parola: string;
@@ -32,6 +33,7 @@ export interface Programare {
 }
 
 export interface Doctori {
+  doctorId: number;
   nume: string;
   prenume: string;
   programari: Programare[];

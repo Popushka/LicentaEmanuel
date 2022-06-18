@@ -34,7 +34,6 @@ namespace BackendLicenta.Controllers
             var dataCurenta = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             bool status = false;
             Console.WriteLine(dataCurenta);
-            request.Data_programarii.Replace("T", " ");
             var d1 = DateTime.Parse(dataCurenta);
             var d2 = DateTime.Parse(request.Data_programarii);
             if (d2 > d1)
@@ -55,7 +54,7 @@ namespace BackendLicenta.Controllers
             {
                 PacientId = request.PacientId,
                 Detalii_aditionale = request.Detalii_aditionale,
-                Data_programarii = request.Data_programarii.Replace("T", " "),
+                Data_programarii = request.Data_programarii,
                 Status = status,
 
 

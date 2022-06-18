@@ -1,12 +1,15 @@
 import { Input, Form, InputNumber, Cascader, Button } from "antd";
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { mockedOptions, mockedUser } from "../../common/HardcodedData";
+import { User } from "../../common/common";
 export interface ModalProgramareProps {
-  setDateModal: Dispatch<any>;
+  setDetaliiAditionale: Dispatch<SetStateAction<string>>;
+  setDataProgramarii: Dispatch<SetStateAction<string>>;
+  userActual: User;
 }
 const layout = {
   labelCol: { span: 8 },
@@ -25,7 +28,11 @@ const validateMessages = {
 
 const options = mockedOptions;
 
-export const ModalProgramare = ({ setDateModal }: ModalProgramareProps) => {
+export const ModalProgramare = ({
+  setDetaliiAditionale,
+  userActual,
+  setDataProgramarii,
+}: ModalProgramareProps) => {
   const onChange = (values: any) => {
     console.log(values);
   };
@@ -38,24 +45,29 @@ export const ModalProgramare = ({ setDateModal }: ModalProgramareProps) => {
   return (
     <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }} layout="horizontal">
       <Form.Item name={["user", "nume"]} label="Nume">
-        <Input defaultValue={mockedUser.nume} />
+        <Input defaultValue={userActual.nume} />
       </Form.Item>
       <Form.Item name={["user", "prenume"]} label="Prenume">
-        <Input defaultValue={mockedUser.prenume} />
+        <Input defaultValue={userActual.prenume} />
       </Form.Item>
       <Form.Item
         name={["user", "varsta"]}
         label="Varsta"
         rules={[{ type: "number", min: 0, max: 99 }]}
       >
-        <InputNumber defaultValue={mockedUser.varsta} />
+        <InputNumber defaultValue={userActual.varsta} />
       </Form.Item>
       <Form.Item label="Diagnostic">
-        <Input.TextArea defaultValue={mockedUser.diagnostic} />
+        <Input.TextArea defaultValue={userActual.diagnostic} />
       </Form.Item>
 
       <Form.Item name={["user", "detalii"]} label="Detalii">
-        <Input.TextArea defaultValue={mockedUser.detalii} />
+        <Input.TextArea
+          defaultValue={userActual.detalii}
+          onChange={(e) => {
+            setDetaliiAditionale(e.currentTarget.value.toString());
+          }}
+        />
       </Form.Item>
       <Form.Item label="Data">
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -63,9 +75,13 @@ export const ModalProgramare = ({ setDateModal }: ModalProgramareProps) => {
             label="Calendar"
             renderInput={(params: any) => <TextField {...params} />}
             value={value}
+            inputFormat="yyyy/MM/dd hh:mm:ss"
+            mask="___/__/__ __:__ _M"
             onChange={(newValue: any) => {
-              setValue(newValue);
-              console.log(newValue);
+              let data: string = newValue;
+              data = data.toString().slice(0, -5);
+              setDataProgramarii(data);
+              console.log("data", data);
             }}
           />
         </LocalizationProvider>

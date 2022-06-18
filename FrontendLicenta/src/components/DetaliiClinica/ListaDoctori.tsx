@@ -3,12 +3,13 @@ import * as React from "react";
 import { mockedClinici, mockedDoctori } from "../../common/HardcodedData";
 import { List } from "antd";
 import { DetaliiDoctor } from "./DetaliiDoctor";
-import { Doctori } from "../../common/common";
+import { Doctori, User } from "../../common/common";
 
 export interface ListaDoctoriProps {
   doctori: Doctori[] | undefined;
+  userActual: User;
 }
-export const ListaDoctori = ({ doctori }: ListaDoctoriProps) => {
+export const ListaDoctori = ({ doctori, userActual }: ListaDoctoriProps) => {
   return (
     <List
       grid={{
@@ -34,7 +35,9 @@ export const ListaDoctori = ({ doctori }: ListaDoctoriProps) => {
         style: { margin: "0px 500px 0px 0px" },
       }}
       dataSource={doctori}
-      renderItem={(doctor) => <DetaliiDoctor doctor={doctor}></DetaliiDoctor>}
+      renderItem={(doctor) => (
+        <DetaliiDoctor userActual={userActual} doctor={doctor}></DetaliiDoctor>
+      )}
     />
   );
 };

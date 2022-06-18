@@ -17,22 +17,117 @@ export const useApp = () => {
   const [headerVisible, setHeaderVisible] = useState<boolean>(true);
   const [headerTitle, setHeaderTitle] = useState("");
   const [backButtonVisible, setBackButtonVisible] = useState(false);
-  const [clinicaActuala, setClinicaActuala] = useState<Clinica>();
+  const [clinicaActuala, setClinicaActuala] = useState<Clinica>({
+    nume: "",
+    adresa: "",
+    clinicaId: 0,
+    descriere: "",
+    doctori: [
+      {
+        doctorId: 0,
+        nume: "",
+        prenume: "",
+        programari: [
+          {
+            id: 0,
+            pacient: {
+              pacientId: 0,
+              nume: "",
+              prenume: "",
+              parola: "",
+              email: "",
+              nume_utilizator: "",
+              varsta: 0,
+              diagnostic: "",
+              detalii: "",
+              pacientCNP: 0,
+              programareId: 0,
+            },
+            data_programarii: "",
+            detalii_aditionale: "",
+            status: false,
+          },
+        ],
+        imagine: "",
+        descriere: "",
+        codParafa: "",
+      },
+    ],
+    longitudine: 0,
+    latitudine: 0,
+    imagine: "",
+    tratamente: "",
+  });
   const [doctori, setDoctori] = useState<Doctori[]>([]);
   const [pacienti, setPacienti] = useState<User[]>([]);
-  const [clinici, setClinici] = useState<Clinica[]>();
+  const [clinici, setClinici] = useState<Clinica[]>([
+    {
+      nume: "",
+      adresa: "",
+      clinicaId: 0,
+      descriere: "",
+      doctori: [
+        {
+          doctorId: 0,
+          nume: "",
+          prenume: "",
+          programari: [
+            {
+              id: 0,
+              pacient: {
+                pacientId: 0,
+                nume: "",
+                prenume: "",
+                parola: "",
+                email: "",
+                nume_utilizator: "",
+                varsta: 0,
+                diagnostic: "",
+                detalii: "",
+                pacientCNP: 0,
+                programareId: 0,
+              },
+              data_programarii: "",
+              detalii_aditionale: "",
+              status: false,
+            },
+          ],
+          imagine: "",
+          descriere: "",
+          codParafa: "",
+        },
+      ],
+      longitudine: 0,
+      latitudine: 0,
+      imagine: "",
+      tratamente: "",
+    },
+  ]);
   const [programari, setProgramari] = useState<Programare[]>();
-  const [userActual, setUserActual] = useState<User>();
+  const [userActual, setUserActual] = useState<User>({
+    pacientId: 0,
+    nume: "",
+    prenume: "",
+    parola: "",
+    email: "",
+    nume_utilizator: "",
+    varsta: 0,
+    diagnostic: "",
+    detalii: "",
+    pacientCNP: 0,
+    programareId: 0,
+  });
   const [user, setUser] = useState<User>();
   const [bearer, setBearer] = useState<any>([]);
   const [doctorActual, setDoctorActual] = useState<Doctori>({
+    doctorId: 0,
     nume: "",
     prenume: "",
     programari: [
       {
         id: 0,
         pacient: {
-          id: 0,
+          pacientId: 0,
           nume: "",
           prenume: "",
           parola: "",
@@ -99,6 +194,7 @@ export const useApp = () => {
       })
       .catch((e) => console.log(e));
   };
+
   const getProgramare = async () => {
     axios
       .get("https://localhost:44386/programare")
@@ -117,6 +213,7 @@ export const useApp = () => {
       })
       .catch((e) => console.log(e));
   };
+
   const adaugareProgramare = async () => {
     axios
       .post("https://localhost:44386/programare", {

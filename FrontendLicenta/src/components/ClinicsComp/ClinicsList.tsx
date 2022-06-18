@@ -6,13 +6,15 @@ import { Clinica, User } from "../../common/common";
 export interface ClinicsListProps {
   navigateToAppointment: () => void;
   setClinicaActuala: (clinica: Clinica) => void;
-  clinici: Clinica[] | undefined;
+  clinici: Clinica[];
   userActual: User | undefined;
+  clinicaActuala: Clinica;
 }
 
 export const ClinicsList = ({
   navigateToAppointment,
   setClinicaActuala,
+  clinicaActuala,
   clinici,
   userActual,
 }: ClinicsListProps) => {
@@ -23,7 +25,7 @@ export const ClinicsList = ({
       size="large"
       pagination={{
         onChange: (page) => {
-          console.log(page);
+          console.log("page:", page);
         },
         pageSize: 10,
       }}
@@ -32,6 +34,7 @@ export const ClinicsList = ({
         if (item.tratamente === userActual?.diagnostic)
           return (
             <ClinicsItem
+              clinicaActuala={clinicaActuala}
               clinica={item}
               navigateToAppointment={navigateToAppointment}
               setClinicaActuala={setClinicaActuala}
