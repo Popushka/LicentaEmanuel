@@ -46,6 +46,7 @@ export const useApp = () => {
             data_programarii: "",
             detalii_aditionale: "",
             status: false,
+            pacientId: 0,
           },
         ],
         imagine: "",
@@ -90,6 +91,7 @@ export const useApp = () => {
               data_programarii: "",
               detalii_aditionale: "",
               status: false,
+              pacientId: 0,
             },
           ],
           imagine: "",
@@ -142,6 +144,7 @@ export const useApp = () => {
         data_programarii: "",
         detalii_aditionale: "",
         status: false,
+        pacientId: 0,
       },
     ],
     imagine: "",
@@ -279,8 +282,8 @@ export const useApp = () => {
     setBackButtonVisible(true);
     setHeaderVisible(true);
     setHeaderTitle("Diagnosticarea problemei");
-    console.log("user Actual", userActual);
     getProgramare();
+    console.log(programari);
   };
   const navigateToAppointment = () => {
     setScreens(Screens.ClinicDetails);

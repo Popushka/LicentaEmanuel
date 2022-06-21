@@ -14,10 +14,12 @@ import { Modal } from "antd";
 export interface PacientiItemInterface {
   programare: Programare;
   isDetalii: boolean;
+  userActual: User;
 }
 export const PacientItem = ({
   programare,
   isDetalii,
+  userActual,
 }: PacientiItemInterface) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -45,7 +47,7 @@ export const PacientItem = ({
         <ListItemText
           primary={
             isDetalii
-              ? programare.pacient.diagnostic
+              ? userActual.diagnostic
               : programare.pacient?.nume + " " + programare.pacient?.prenume
           }
           secondary={
@@ -56,7 +58,8 @@ export const PacientItem = ({
                 variant="body2"
                 color="text.primary"
               ></Typography>
-              Varsta:{programare.pacient?.varsta}
+              Varsta:
+              {isDetalii ? userActual.varsta : programare.pacient?.varsta}
             </React.Fragment>
           }
         />
@@ -79,7 +82,11 @@ export const PacientItem = ({
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <ProgramarePage programare={programare}></ProgramarePage>
+        <ProgramarePage
+          isDetalii={isDetalii}
+          userActual={userActual}
+          programare={programare}
+        ></ProgramarePage>
       </Modal>
     </div>
   );

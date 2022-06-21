@@ -9,7 +9,7 @@ import {
   Avatar,
   Modal,
 } from "antd";
-import { Doctori, User } from "../../common/common";
+import { Doctori, Programare, User } from "../../common/common";
 import Disease from "../medical-symptom-checker-master/src/components/Disease/Disease";
 import Meta from "antd/lib/card/Meta";
 import { ProgramarePage } from "../PacientiPage/PaginaProgramare";
@@ -43,9 +43,10 @@ const options = [
 ];
 export interface HealthProblemFormProps {
   navigateToClinics: () => void;
-  userActual: User | undefined;
+  userActual: User ;
   navigateToAutodiagnosticare: () => void;
   doctorActual: Doctori;
+  programari: Programare[] | undefined;
 }
 
 export const HealthProblemForm = ({
@@ -53,6 +54,7 @@ export const HealthProblemForm = ({
   navigateToAutodiagnosticare,
   userActual,
   doctorActual,
+  programari,
 }: HealthProblemFormProps) => {
   const onChange = (values: any) => {
     console.log(values);
@@ -117,7 +119,7 @@ export const HealthProblemForm = ({
                     style={{ marginTop: "0.5rem" }}
                   />
                 }
-                title={userActual?.nume+" "+userActual?.prenume}
+                title={userActual?.nume + " " + userActual?.prenume}
                 description={userActual?.diagnostic || "fara diagnostic"}
               />
             </Card>
@@ -155,7 +157,8 @@ export const HealthProblemForm = ({
             <PacientiPage
               DoctorActual={doctorActual}
               isDetalii={isDetalii}
-              programari={mockedProgramari}
+              programari={programari}
+              userActual={userActual}
             ></PacientiPage>
             {/* <ProgramarePage programare={userActual?.programareId}></ProgramarePage> */}
           </Modal>

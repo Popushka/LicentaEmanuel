@@ -19,9 +19,15 @@ import { Programare, User } from "../../common/common";
 
 export interface ProgramarePageProps {
   programare: Programare;
+  userActual: User;
+  isDetalii: boolean;
 }
 
-export const ProgramarePage = ({ programare }: ProgramarePageProps) => {
+export const ProgramarePage = ({
+  programare,
+  userActual,
+  isDetalii,
+}: ProgramarePageProps) => {
   const onChange = (values: any) => {
     console.log(values);
   };
@@ -52,24 +58,44 @@ export const ProgramarePage = ({ programare }: ProgramarePageProps) => {
         layout="horizontal"
       >
         <Form.Item name={["user", "nume"]} label="Nume">
-          <Input defaultValue={programare.pacient?.nume} />
+          <Input
+            defaultValue={
+              isDetalii ? userActual.nume : programare.pacient?.nume
+            }
+          />
         </Form.Item>
         <Form.Item name={["user", "prenume"]} label="Prenume">
-          <Input defaultValue={programare.pacient?.prenume} />
+          <Input
+            defaultValue={
+              isDetalii ? userActual.prenume : programare.pacient?.prenume
+            }
+          />
         </Form.Item>
         <Form.Item
           name={["user", "varsta"]}
           label="Varsta"
           rules={[{ type: "number", min: 0, max: 99 }]}
         >
-          <InputNumber defaultValue={programare.pacient?.varsta} />
+          <InputNumber
+            defaultValue={
+              isDetalii ? userActual.varsta : programare.pacient?.varsta
+            }
+          />
         </Form.Item>
         <Form.Item label="Diagnostic">
-          <Input.TextArea defaultValue={programare.pacient?.diagnostic} />
+          <Input.TextArea
+            defaultValue={
+              isDetalii ? userActual.diagnostic : programare.pacient?.diagnostic
+            }
+          />
         </Form.Item>
 
         <Form.Item name={["user", "detalii"]} label="Detalii">
-          <Input.TextArea defaultValue={programare.pacient?.detalii} />
+          <Input.TextArea
+            defaultValue={
+              isDetalii ? userActual.detalii : programare.pacient?.detalii
+            }
+          />
         </Form.Item>
         <Form.Item label="Data">
           <LocalizationProvider dateAdapter={AdapterDateFns}>

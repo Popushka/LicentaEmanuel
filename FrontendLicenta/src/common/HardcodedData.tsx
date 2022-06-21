@@ -21,6 +21,7 @@ export const mockedProgramari: Programare[] = [
     data_programarii: "2022-31-06T16:00:00.000Z",
     detalii_aditionale: mockedUser.detalii,
     status: true,
+    pacientId: 0,
   },
   {
     id: 1,
@@ -28,6 +29,7 @@ export const mockedProgramari: Programare[] = [
     data_programarii: "2022-06-31T16:00:00.000Z",
     detalii_aditionale: mockedUser.detalii,
     status: false,
+    pacientId: 0,
   },
 ];
 

@@ -42,15 +42,16 @@ namespace WebApi.Controllers
             }
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),//subiectul
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),//id-ul tokenului
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()),//data trimiterii
+                new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToString()),
                 new Claim("PacientId",pacient.PacientId.ToString()),
                 new Claim("Nume_utilizator",pacient.Nume_utilizator)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));//secretul pt encriptare
-            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);//encriptare
-            var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, DateTime.Now, DateTime.Now.AddHours(4), signingCredentials: signIn);//construiesc token
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], 
+                claims, DateTime.Now, DateTime.Now.AddHours(4), signingCredentials: signIn);
             return Ok(new JwtSecurityTokenHandler().WriteToken(token));
         }
 

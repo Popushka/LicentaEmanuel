@@ -30,6 +30,7 @@ export interface Programare {
   data_programarii: string;
   detalii_aditionale: string;
   status: boolean;
+  pacientId:number;
 }
 
 export interface Doctori {

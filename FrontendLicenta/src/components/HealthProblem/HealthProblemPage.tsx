@@ -1,11 +1,12 @@
-import { Doctori, User } from "../../common/common";
+import { Doctori, Programare, User } from "../../common/common";
 import { HealthProblemForm } from "./HealthProblemForm";
 
 export interface HealthProblemPageProps {
   navigateToClinics: () => void;
-  userActual: User | undefined;
+  userActual: User;
   navigateToAutodiagnosticare: () => void;
   doctorActual: Doctori;
+  programari: Programare[] | undefined;
 }
 
 export const HealthProblemPage = ({
@@ -13,6 +14,7 @@ export const HealthProblemPage = ({
   navigateToAutodiagnosticare,
   userActual,
   doctorActual,
+  programari,
 }: HealthProblemPageProps) => {
   return (
     <div>
@@ -21,6 +23,7 @@ export const HealthProblemPage = ({
         navigateToAutodiagnosticare={navigateToAutodiagnosticare}
         userActual={userActual}
         navigateToClinics={navigateToClinics}
+        programari={programari}
       ></HealthProblemForm>
     </div>
   );

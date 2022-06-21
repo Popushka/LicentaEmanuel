@@ -16,7 +16,7 @@ const Display = ({ latitudine, longitudine }: DisplayProps) => {
   return (
     <div className="wrapper">
       <GoogleMap
-        defaultZoom={12}
+        defaultZoom={19}
         defaultCenter={{ lat: latitudine, lng: longitudine }}
       />
     </div>

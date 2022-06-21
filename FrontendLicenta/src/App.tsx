@@ -63,6 +63,7 @@ export const App = () => {
           navigateToAutodiagnosticare={navigateToSymptomChecker}
           userActual={userActual}
           navigateToClinics={navigateToClinics}
+          programari={programari}
         />
         <Clinics
           clinicaActuala={clinicaActuala}
@@ -79,6 +80,7 @@ export const App = () => {
           DoctorActual={doctorActual}
           isDetalii={false}
           programari={programari}
+          userActual={userActual}
         ></PacientiPage>
         <HomePageMain></HomePageMain>
       </Navigation>

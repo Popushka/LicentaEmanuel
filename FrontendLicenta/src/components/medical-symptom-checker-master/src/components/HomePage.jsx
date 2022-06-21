@@ -106,7 +106,7 @@ class HomePage extends Component {
       case "Simptom":
         return this.setState({
           current_page: "Afectiune",
-          button_name: "Reincearca",
+          button_name: "Finalizare",
           tab_progress: 100,
           // symptom_nav_icon: <CheckIcon className={"check-icon"} style={{ color: "white!important" }} />,
           // disease_nav_icon: <CheckIcon className={"check-icon"} style={{ color: "white!important" }} />,
